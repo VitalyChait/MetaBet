@@ -166,7 +166,7 @@ def validate_with_gemini(post_text):
     
     try:
         response = client.models.generate_content(
-            model='gemini-2.0-flash', 
+            model='gemini-3-flash-preview', 
             contents=prompt
         )
         result = response.text.strip().upper()

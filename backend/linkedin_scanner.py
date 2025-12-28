@@ -54,7 +54,21 @@ def login_linkedin(driver):
 
 def search_polymarket_posts(driver):
     print("Searching for Polymarket posts...")
-    search_url = "https://www.linkedin.com/search/results/content/?keywords=Polymarket&origin=SWITCH_SEARCH_VERTICAL"
+
+    base_url = "https://www.linkedin.com/search/results/content/"
+
+    date_posted = '"past-month"' # past-week, past-month, past-year
+    date_selection = "?" if not date_posted else "?datePosted=" + date_posted
+
+    search_term = ["polymarket", "whale", "win"]
+    keywords_selection = "keywords=" + "%20".join(search_term)
+
+    extra_selection = 'sortBy="date_posted"&origin=SWITCH_SEARCH_VERTICAL'
+
+
+
+
+    search_url = base_url + date_selection + "&" + keywords_selection + "&" + extra_selection
     driver.get(search_url)
     time.sleep(5)  # Allow initial load
 
@@ -153,7 +167,7 @@ def validate_with_gemini(post_text):
     
     try:
         response = client.models.generate_content(
-            model='gemini-2.5-flash', 
+            model='	gemini-3-flash-preview', 
             contents=prompt
         )
         result = response.text.strip().upper()
@@ -167,7 +181,7 @@ def main():
     try:
         login_linkedin(driver)
         search_polymarket_posts(driver)
-        scroll_feed(driver, num_scrolls=10) # Adjust scrolls as needed
+        scroll_feed(driver, num_scrolls=20) # Adjust scrolls as needed
         
         raw_posts = extract_posts(driver)
         keyword_filtered_posts = filter_with_keywords(raw_posts)

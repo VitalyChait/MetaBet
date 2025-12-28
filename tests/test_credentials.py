@@ -51,7 +51,7 @@ def test_gemini_api_connection(env_vars):
     
     try:
         response = client.models.generate_content(
-            model='gemini-2.0-flash', 
+            model='gemini-3-flash-preview', 
             contents="Say 'Hello' if you can read this."
         )
         assert response is not None
