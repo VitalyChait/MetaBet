@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
-import google.generativeai as genai
+from google import genai
 
 # Load environment variables
 load_dotenv()
@@ -23,8 +23,7 @@ if not all([LINKEDIN_USERNAME, LINKEDIN_PASSWORD, GEMINI_API_KEY]):
     raise ValueError("Please set LINKEDIN_USERNAME, LINKEDIN_PASSWORD, and GEMINI_API_KEY in .env file")
 
 # Configure Gemini
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-pro')
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 def setup_driver():
     options = webdriver.ChromeOptions()
@@ -153,7 +152,10 @@ def validate_with_gemini(post_text):
     """
     
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model='gemini-2.5-flash', 
+            contents=prompt
+        )
         result = response.text.strip().upper()
         return "TRUE" in result
     except Exception as e:
@@ -196,4 +198,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
