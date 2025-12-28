@@ -55,6 +55,7 @@ class PolymarketAnalyzer:
                     break
                 
                 offset += limit
+                print(f"Fetched {offset} items for {wallet}...", end='\r')
                 time.sleep(0.1) # Gentle rate limit
             except Exception as e:
                 print(f"Error fetching activity for {wallet}: {e}")
