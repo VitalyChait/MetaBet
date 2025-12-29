@@ -445,6 +445,7 @@ def main():
         all_stats = []
         
         # Iterate through users
+        first_write = True
         for index, row in df.iterrows():
             if limit and count >= limit:
                 break
@@ -512,13 +513,18 @@ def main():
                 user_stat["Notes"] = "Navigation/Sort Error"
 
             all_stats.append(user_stat)
+
+            # Save incrementally
+            try:
+                mode = 'w' if first_write else 'a'
+                pd.DataFrame([user_stat]).to_csv(args.output_file, mode=mode, header=first_write, index=False)
+                first_write = False
+            except Exception as e:
+                print(f"Error saving incremental CSV: {e}")
+
             count += 1
             
-        # Save to CSV
-        if all_stats:
-            stats_df = pd.DataFrame(all_stats)
-            stats_df.to_csv(args.output_file, index=False)
-            print(f"\nAnalysis complete. Saved statistics to {args.output_file}")
+        print(f"\nAnalysis complete. Statistics saved to {args.output_file}")
             
     finally:
         driver.quit()
