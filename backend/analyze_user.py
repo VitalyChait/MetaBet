@@ -16,9 +16,18 @@ from webdriver_manager.chrome import ChromeDriverManager
 # Load environment variables
 load_dotenv()
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+CSV_DIR = os.path.join(BASE_DIR, "csv")
+
 def log(message):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{timestamp}] {message}")
+
+def resolve_csv_path(path):
+    if os.path.isabs(path):
+        return path
+    filename = os.path.basename(path)
+    return os.path.join(CSV_DIR, filename)
 
 def setup_driver():
     options = webdriver.ChromeOptions()
@@ -35,7 +44,7 @@ def parse_arguments():
     parser.add_argument("--user-limit", type=int, default=None, help="Limit the number of users to scan from the CSV.")
     parser.add_argument("--bet-limit", type=int, default=None, help="Limit the number of bets to scan per user. Default is all bets.")
     parser.add_argument("--csv-file", type=str, default="polymarket_leaderboard_monthly.csv", help="Path to the leaderboard CSV file.")
-    parser.add_argument("--output-file", type=str, default="backend/polymarket_user_stats.csv", help="Path to save the analysis output CSV.")
+    parser.add_argument("--output-file", type=str, default="polymarket_user_stats.csv", help="Path to save the analysis output CSV.")
     return parser.parse_args()
 
 def extract_and_analyze_bets(driver, bet_limit):
@@ -428,15 +437,17 @@ def navigate_and_sort_bets(driver, profile_url):
 def main():
     args = parse_arguments()
     log(f"Starting analysis with User Limit: {args.user_limit}, Bet Limit: {args.bet_limit}")
+    csv_input_path = resolve_csv_path(args.csv_file)
+    csv_output_path = resolve_csv_path(args.output_file)
     
     # Placeholder for main logic
-    if not os.path.exists(args.csv_file):
-        log(f"Error: CSV file '{args.csv_file}' not found.")
+    if not os.path.exists(csv_input_path):
+        log(f"Error: CSV file '{csv_input_path}' not found.")
         return
 
     try:
-        df = pd.read_csv(args.csv_file)
-        log(f"Loaded {len(df)} users from {args.csv_file}")
+        df = pd.read_csv(csv_input_path)
+        log(f"Loaded {len(df)} users from {csv_input_path}")
     except Exception as e:
         log(f"Error reading CSV: {e}")
         return
@@ -521,15 +532,16 @@ def main():
 
             # Save incrementally
             try:
+                os.makedirs(CSV_DIR, exist_ok=True)
                 mode = 'w' if first_write else 'a'
-                pd.DataFrame([user_stat]).to_csv(args.output_file, mode=mode, header=first_write, index=False)
+                pd.DataFrame([user_stat]).to_csv(csv_output_path, mode=mode, header=first_write, index=False)
                 first_write = False
             except Exception as e:
                 log(f"Error saving incremental CSV: {e}")
 
             count += 1
             
-        log(f"Analysis complete. Statistics saved to {args.output_file}")
+        log(f"Analysis complete. Statistics saved to {csv_output_path}")
             
     finally:
         driver.quit()

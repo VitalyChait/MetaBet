@@ -3,9 +3,12 @@ import csv
 import time
 import os
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+CSV_DIR = os.path.join(BASE_DIR, "csv")
+
 def scrape_polymarket_leaderboard():
     base_url = "https://data-api.polymarket.com/v1/leaderboard"
-    output_file = "polymarket_leaderboard_monthly.csv"
+    output_file = os.path.join(CSV_DIR, "polymarket_leaderboard_monthly.csv")
     
     # Parameters for the request
     params = {
@@ -63,8 +66,7 @@ def scrape_polymarket_leaderboard():
 
     # Save to CSV
     if all_users:
-        # Resolve path relative to where script is likely run or absolute path
-        # Using current working directory for simplicity as per request context
+        os.makedirs(CSV_DIR, exist_ok=True)
         with open(output_file, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.DictWriter(file, fieldnames=["Rank", "Name", "Profile URL"])
             writer.writeheader()
@@ -77,5 +79,3 @@ def scrape_polymarket_leaderboard():
 
 if __name__ == "__main__":
     scrape_polymarket_leaderboard()
-
-

@@ -198,7 +198,10 @@ def main():
         
         # Save to CSV
         if final_posts:
-            output_file = "backend/polymarket_high_rate_posts.csv"
+            base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+            csv_dir = os.path.join(base_dir, "csv")
+            os.makedirs(csv_dir, exist_ok=True)
+            output_file = os.path.join(csv_dir, "polymarket_high_rate_posts.csv")
             df = pd.DataFrame(final_posts)
             df.to_csv(output_file, index=False)
             print(f"Saved {len(final_posts)} posts to {output_file}")

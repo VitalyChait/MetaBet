@@ -36,9 +36,9 @@ This is **NOT** insider trading detection (we lack the resources/authority). Ins
 
 ### Analysis Outputs
 
-- `polymarket_leaderboard_monthly.csv` - Top traders by volume
-- `potential_whales.csv` - Flagged sophisticated traders
-- `backend/polymarket_user_stats.csv` - Detailed user statistics
+- `csv/polymarket_leaderboard_monthly.csv` - Top traders by volume
+- `csv/potential_whales.csv` - Flagged sophisticated traders
+- `csv/polymarket_user_stats.csv` - Detailed user statistics
 
 ---
 
@@ -85,8 +85,8 @@ This will:
 ```bash
 # Analyze specific users from leaderboard
 python backend/scraper.py --user-limit 10 --bet-limit 100 \
-  --csv-file polymarket_leaderboard_monthly.csv \
-  --output-file backend/polymarket_user_stats.csv
+  --csv-file csv/polymarket_leaderboard_monthly.csv \
+  --output-file csv/polymarket_user_stats.csv
 ```
 
 **Options:**
@@ -162,12 +162,13 @@ Resolution
 MetaBet/
 ├── backend/
 │   ├── scraper.py              # Selenium profile scraper (FIXED VERSION)
-│   └── polymarket_user_stats.csv  # Analysis output
 ├── tests/
 │   └── [test files]
 ├── tests/test_api.py           # Polymarket API analyzer
-├── polymarket_leaderboard_monthly.csv  # Top traders
-├── potential_whales.csv        # Flagged users
+├── csv/
+│   ├── polymarket_leaderboard_monthly.csv  # Top traders
+│   ├── polymarket_user_stats.csv        # Analysis output
+│   └── potential_whales.csv        # Flagged users
 ├── requirements.txt
 ├── .env_example
 └── README.md

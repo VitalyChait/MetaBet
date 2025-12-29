@@ -1,8 +1,11 @@
+import os
 import requests
 import pandas as pd
 
 # Base URL for Polymarket's Official Data API
 BASE_URL = "https://gamma-api.polymarket.com"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+CSV_DIR = os.path.join(BASE_DIR, "csv")
 
 def get_top_markets():
     # Fetch top active markets by volume
@@ -73,8 +76,10 @@ if markets:
     print(df.head())
     
     # Save to CSV for your next step (Win Rate Analysis)
-    df.to_csv("potential_whales.csv", index=False)
-    print(f"\nSaved {len(df)} unique interactions to potential_whales.csv")
+    os.makedirs(CSV_DIR, exist_ok=True)
+    output_file = os.path.join(CSV_DIR, "potential_whales.csv")
+    df.to_csv(output_file, index=False)
+    print(f"\nSaved {len(df)} unique interactions to {output_file}")
 
 else:
     print("No markets found.")
