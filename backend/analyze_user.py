@@ -2,6 +2,7 @@ import os
 import time
 import re
 import argparse
+from datetime import datetime
 import pandas as pd
 from dotenv import load_dotenv
 from selenium import webdriver
@@ -14,6 +15,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Load environment variables
 load_dotenv()
+
+def log(message):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{timestamp}] {message}")
 
 def setup_driver():
     options = webdriver.ChromeOptions()
@@ -34,7 +39,7 @@ def parse_arguments():
     return parser.parse_args()
 
 def extract_and_analyze_bets(driver, bet_limit):
-    print("Extracting bets...")
+    log("Extracting bets...")
     
     # Wait for at least one bet to appear or timeout
     try:
@@ -42,7 +47,7 @@ def extract_and_analyze_bets(driver, bet_limit):
             EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Won') or contains(text(), 'Lost')]"))
         )
     except:
-        print("No closed bets found or timeout.")
+        log("No closed bets found or timeout.")
         return {}
 
     unique_bets_data = [] # List of dicts storing extracted data
@@ -202,7 +207,7 @@ def extract_and_analyze_bets(driver, bet_limit):
         else:
             break
             
-    print(f"Found {len(unique_bets_data)} bets.")
+    log(f"Found {len(unique_bets_data)} bets.")
     
     processed_bets = 0
     wins = 0
@@ -287,7 +292,7 @@ def extract_and_analyze_bets(driver, bet_limit):
             market_outcomes[title].add(outcome)
             
         except Exception as e:
-            print(f"Error parsing row: {e}")
+            log(f"Error parsing row: {e}")
             continue
 
     # Analyze duplicates
@@ -325,7 +330,7 @@ def extract_and_analyze_bets(driver, bet_limit):
     }
 
 def navigate_and_sort_bets(driver, profile_url):
-    print(f"Navigating to {profile_url}...")
+    log(f"Navigating to {profile_url}...")
     driver.get(profile_url)
     
     try:
@@ -335,7 +340,7 @@ def navigate_and_sort_bets(driver, profile_url):
         # Use exact text match or robust contains
         closed_tab = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[text()='Closed'] | //button[contains(text(), 'Closed')]")))
         closed_tab.click()
-        print("Clicked 'Closed' tab.")
+        log("Clicked 'Closed' tab.")
         time.sleep(3)
         
         # 2. Find and Click Sort Dropdown
@@ -356,18 +361,18 @@ def navigate_and_sort_bets(driver, profile_url):
                     sort_button = btn
                     break
         except Exception as e:
-            print(f"Debug: Error finding buttons by attributes: {e}")
+            log(f"Debug: Error finding buttons by attributes: {e}")
             pass
             
         if not sort_button:
-            print("Debug: Fallback to text search for sort button...")
+            log("Debug: Fallback to text search for sort button...")
             # Fallback to strict text search in buttons
             # We construct a robust XPath that looks for a button containing the text
             xpath_conditions = " or ".join([f"contains(., '{k}')" for k in sort_keywords])
             try:
                 sort_button = wait.until(EC.element_to_be_clickable((By.XPATH, f"//button[{xpath_conditions}]")))
             except:
-                print("Debug: Could not find sort button by text.")
+                log("Debug: Could not find sort button by text.")
                 # As a last resort, list all buttons to see what's there (for debugging if this fails)
                 # buttons = driver.find_elements(By.TAG_NAME, "button")
                 # print("Available buttons:", [b.text for b in buttons if b.is_displayed()])
@@ -382,7 +387,7 @@ def navigate_and_sort_bets(driver, profile_url):
         # We click it anyway to be sure or if it's not Date
         if "Date" not in current_text or True: # Force click to ensure we see the menu to select Date
             sort_button.click()
-            print(f"Clicked Sort dropdown (Text: '{current_text}').")
+            log(f"Clicked Sort dropdown (Text: '{current_text}').")
             time.sleep(1)
             
             # 3. Select "Date"
@@ -394,9 +399,9 @@ def navigate_and_sort_bets(driver, profile_url):
                 # Radix UI often puts items in a div with role="menuitem"
                 date_option = wait.until(EC.element_to_be_clickable((By.XPATH, "//div[@role='menuitem' and contains(., 'Date')] | //div[@role='option' and contains(., 'Date')]")))
                 date_option.click()
-                print("Selected 'Date' option.")
+                log("Selected 'Date' option.")
             except:
-                print("Debug: Standard menuitem selector failed. Trying broad text match.")
+                log("Debug: Standard menuitem selector failed. Trying broad text match.")
                 # Fallback: Find any visible element with text "Date" that appeared recently
                 date_elements = driver.find_elements(By.XPATH, "//*[contains(text(), 'Date')]")
                 clicked = False
@@ -405,7 +410,7 @@ def navigate_and_sort_bets(driver, profile_url):
                         try:
                             el.click()
                             clicked = True
-                            print("Selected 'Date' option (broad match).")
+                            log("Selected 'Date' option (broad match).")
                             break
                         except:
                             continue
@@ -415,25 +420,25 @@ def navigate_and_sort_bets(driver, profile_url):
             time.sleep(3)
             
     except Exception as e:
-        print(f"Error navigating/sorting: {e}")
+        log(f"Error navigating/sorting: {e}")
         return False
         
     return True
 
 def main():
     args = parse_arguments()
-    print(f"Starting analysis with User Limit: {args.user_limit}, Bet Limit: {args.bet_limit}")
+    log(f"Starting analysis with User Limit: {args.user_limit}, Bet Limit: {args.bet_limit}")
     
     # Placeholder for main logic
     if not os.path.exists(args.csv_file):
-        print(f"Error: CSV file '{args.csv_file}' not found.")
+        log(f"Error: CSV file '{args.csv_file}' not found.")
         return
 
     try:
         df = pd.read_csv(args.csv_file)
-        print(f"Loaded {len(df)} users from {args.csv_file}")
+        log(f"Loaded {len(df)} users from {args.csv_file}")
     except Exception as e:
-        print(f"Error reading CSV: {e}")
+        log(f"Error reading CSV: {e}")
         return
 
 
@@ -455,7 +460,7 @@ def main():
             if not profile_url or pd.isna(profile_url):
                 continue
                 
-            print(f"--- Processing User {index + 1}: {name} ---")
+            log(f"--- Processing User {index + 1}: {name} ---")
             
             user_stat = {
                 "Rank": row.get('Rank'),
@@ -474,9 +479,9 @@ def main():
             if navigate_and_sort_bets(driver, profile_url):
                  results = extract_and_analyze_bets(driver, args.bet_limit)
                  if results:
-                     print(f"  Results for {name}:")
-                     print(f"  Wins: {results['wins']}, Losses: {results['losses']}")
-                     print(f"  Total Won: ${results['total_won']:.2f}, Total Lost: ${results['total_lost']:.2f}")
+                     log(f"  Results for {name}:")
+                     log(f"  Wins: {results['wins']}, Losses: {results['losses']}")
+                     log(f"  Total Won: ${results['total_won']:.2f}, Total Lost: ${results['total_lost']:.2f}")
                      
                      user_stat["Wins"] = results['wins']
                      user_stat["Losses"] = results['losses']
@@ -488,27 +493,27 @@ def main():
                          user_stat["Win Rate"] = (results['wins'] / total_bets) * 100
                      
                      if results['duplicates']:
-                         print(f"  Found {len(results['duplicates'])} duplicate bet groups:")
+                         log(f"  Found {len(results['duplicates'])} duplicate bet groups:")
                          dup_count = sum(d['count'] - 1 for d in results['duplicates']) # Count of extra bets
                          
                          user_stat["Duplicate Bets"] = len(results['duplicates']) # Number of groups
                          
                          notes = []
                          for dup in results['duplicates']:
-                             print(f"    - '{dup['title']}' ({dup['outcome']}) appeared {dup['count']} times")
+                             log(f"    - '{dup['title']}' ({dup['outcome']}) appeared {dup['count']} times")
                              notes.append(f"{dup['title']}/{dup['outcome']} (x{dup['count']})")
                          
                          # Add hedging info to notes
                          if results['hedged_markets']:
-                             print(f"  Found {len(results['hedged_markets'])} hedged markets:")
+                             log(f"  Found {len(results['hedged_markets'])} hedged markets:")
                              for h in results['hedged_markets']:
-                                 print(f"    - '{h['title']}' with outcomes: {', '.join(h['outcomes'])}")
+                                 log(f"    - '{h['title']}' with outcomes: {', '.join(h['outcomes'])}")
                                  notes.append(f"HEDGED: {h['title']} ({', '.join(h['outcomes'])})")
                                  
                          user_stat["Hedged Bets"] = len(results['hedged_markets'])
                          user_stat["Notes"] = "; ".join(notes)
                  else:
-                     print("  No results found.")
+                     log("  No results found.")
             else:
                 user_stat["Notes"] = "Navigation/Sort Error"
 
@@ -520,15 +525,14 @@ def main():
                 pd.DataFrame([user_stat]).to_csv(args.output_file, mode=mode, header=first_write, index=False)
                 first_write = False
             except Exception as e:
-                print(f"Error saving incremental CSV: {e}")
+                log(f"Error saving incremental CSV: {e}")
 
             count += 1
             
-        print(f"\nAnalysis complete. Statistics saved to {args.output_file}")
+        log(f"Analysis complete. Statistics saved to {args.output_file}")
             
     finally:
         driver.quit()
 
 if __name__ == "__main__":
     main()
-

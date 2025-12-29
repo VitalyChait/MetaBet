@@ -22,7 +22,7 @@ This is **NOT** insider trading detection (we lack the resources/authority). Ins
 
 ### Data Collection Pipeline
 
-**1. Polymarket API Scraper** (`test_api.py`)
+**1. Polymarket API Scraper** (`tests/test_api.py`)
 - Fetches resolved markets from last 6 months
 - Analyzes trade timing relative to resolution
 - Identifies contrarian positions that won
@@ -72,7 +72,7 @@ cp .env_example .env
 
 ```bash
 # Fetch resolved markets and find sophisticated traders
-python test_api.py
+python tests/test_api.py
 ```
 
 This will:
@@ -165,7 +165,7 @@ MetaBet/
 │   └── polymarket_user_stats.csv  # Analysis output
 ├── tests/
 │   └── [test files]
-├── test_api.py                 # Polymarket API analyzer
+├── tests/test_api.py           # Polymarket API analyzer
 ├── polymarket_leaderboard_monthly.csv  # Top traders
 ├── potential_whales.csv        # Flagged users
 ├── requirements.txt
