@@ -28,22 +28,15 @@ def setup_driver():
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Analyze Polymarket user betting history.")
     parser.add_argument("--user-limit", type=int, default=None, help="Limit the number of users to scan from the CSV.")
-    parser.add_argument("--bet-limit", type=int, default=10, help="Limit the number of bets to scan per user.")
+    parser.add_argument("--bet-limit", type=int, default=None, help="Limit the number of bets to scan per user. Default is all bets.")
     parser.add_argument("--csv-file", type=str, default="polymarket_leaderboard_monthly.csv", help="Path to the leaderboard CSV file.")
     parser.add_argument("--output-file", type=str, default="backend/polymarket_user_stats.csv", help="Path to save the analysis output CSV.")
     return parser.parse_args()
 
 def extract_and_analyze_bets(driver, bet_limit):
     print("Extracting bets...")
-    bets_data = []
     
-    # Locate bet containers.
-    # We look for elements that look like rows in the list.
-    # A robust way is to find elements containing "Won" or "Lost" and "Shares" or currency.
-    # Or common class prefixes if available. 
-    # Let's try to find the list items by a broad selector and filter.
-    
-    # Wait for at least one bet to appear or timeout (if user has no closed bets)
+    # Wait for at least one bet to appear or timeout
     try:
         WebDriverWait(driver, 5).until(
             EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Won') or contains(text(), 'Lost')]"))
@@ -52,19 +45,121 @@ def extract_and_analyze_bets(driver, bet_limit):
         print("No closed bets found or timeout.")
         return {}
 
-    # Find all potential bet rows
-    # Assuming standard table or list divs
-    # Strategy: Find the container of the list, then children.
-    # Often simpler: Find all elements that contain the title structure or the status.
+    unique_rows = []
+    seen_ids = set() # Use web element ID or a stable hash if possible, but elements change on scroll. 
+                     # Better to track processed texts or indices if list is stable.
+                     # However, on infinite scroll, DOM elements might be recycled or added.
+                     # A safer way for scraping infinite scroll is to extract data as we go and track uniqueness by content.
     
-    # Let's look for the main identifiers "Won" / "Lost" labels which seem to be in a badge or specific text element.
-    # Then traverse up to the row container.
+    extracted_bets = [] # List of dicts
     
-    status_elements = driver.find_elements(By.XPATH, "//*[contains(text(), 'Won') or contains(text(), 'Lost')]")
+    last_height = driver.execute_script("return document.body.scrollHeight")
+    scroll_attempts = 0
+    max_scroll_attempts = 3 # Stop if no new content after 3 tries
     
-    # We might need to scroll to load more if bet_limit is high, 
-    # but for now let's assume we just take what's visible or do simple scrolling.
-    # The user asked to "limit the amount of bets to scan", so we iterate up to that limit.
+    while True:
+        # Find current visible rows
+        # Strategy: Find status elements, get parent rows
+        status_elements = driver.find_elements(By.XPATH, "//*[contains(text(), 'Won') or contains(text(), 'Lost')]")
+        
+        found_new_on_this_scroll = False
+        
+        for status_el in status_elements:
+            try:
+                # Traverse up to find the row container
+                row = status_el.find_element(By.XPATH, "./ancestor::a | ./ancestor::div[contains(@class, 'grid') or contains(@class, 'flex')][position() < 6]")
+                
+                # Check if we've seen this row element (by ID) or content?
+                # Element IDs change. Let's parse immediately and check for uniqueness of the *bet instance*.
+                # But duplicates are allowed! So how do we distinguish "seen this DOM element" vs "duplicate bet"?
+                # We can check if the element is already in our current 'unique_rows' list (Selenium objects)
+                # But scrolling might invalidate them.
+                
+                # Best approach for infinite scroll: 
+                # 1. Parse the data.
+                # 2. Add to a list if we haven't processed this exact *row index/position*? Hard to track.
+                # 3. Often easier: Collect all, then dedupe?
+                #    If duplicates are "valid" data (user bet twice), we can't simple-dedupe by content.
+                #    We need to dedupe by "Identity of the bet event".
+                #    Polymarket doesn't show bet IDs easily.
+                
+                # Compromise:
+                # We assume that scrolling down reveals NEW bets.
+                # We keep track of the text of the *last few* bets processed to avoid overlapping processing
+                # OR we just collect everything we see, and assume the script manages the flow.
+                
+                # Actually, Selenium `find_elements` returns current DOM.
+                # If we scroll, top elements might be removed (virtualization) or stay.
+                # If they stay, we will see them again.
+                # We can use `row.text` + `row.location` (y-coordinate) maybe? No, location changes.
+                
+                # Let's try to track by a unique attribute if available, or just full text + index relative to something?
+                # Simple approach: content hash. But identical bets have identical content.
+                # If I bet twice identically, the row text is identical.
+                # How does a human know? Position in list.
+                # We can rely on the fact that we append new ones.
+                
+                # Let's use a set of (text, index_in_current_batch) ? No.
+                
+                # Allow redundancy processing: 
+                # If we collect all visible rows, how do we know which ones we already collected?
+                # We can't easily unless we know the total order.
+                
+                # For now, let's assume we can grab all visible, process them.
+                # If bet_limit is None (infinite), we scroll and grab more.
+                # To avoid re-adding the top ones, we might need to rely on the fact that we are scrolling.
+                # If the list is virtualized, old ones disappear.
+                # If not, they stay.
+                
+                # Let's try to use the `data-id` or `href` if available.
+                # The rows are often `<a>` tags or contain links. The profile URL is generic.
+                # Does the bet have a transaction hash link?
+                # Usually yes! "View on block explorer" or similar might be in the row or clickable.
+                # If we can find a unique link (tx hash), that's perfect.
+                # If not, we might over-count.
+                
+                # Let's just do a single pass of "scroll to bottom until end", then "collect all"?
+                # If list is virtualized, "collect all at end" won't work.
+                # We must collect as we go.
+                
+                # To handle "identical bets" vs "same row seen twice":
+                # We can track the WebElements seen so far in this session?
+                # Selenium IDs are stable for the lifetime of the DOM element.
+                # If the DOM doesn't trash elements, `row.id` works.
+                
+                if row in unique_rows:
+                    continue
+                
+                unique_rows.append(row)
+                found_new_on_this_scroll = True
+                
+                if bet_limit and len(unique_rows) >= bet_limit:
+                    break
+                    
+            except:
+                continue
+
+        if bet_limit and len(unique_rows) >= bet_limit:
+            break
+            
+        # Scroll logic
+        if not bet_limit or len(unique_rows) < bet_limit:
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+            new_height = driver.execute_script("return document.body.scrollHeight")
+            
+            if new_height == last_height:
+                scroll_attempts += 1
+                if scroll_attempts >= max_scroll_attempts:
+                    break
+            else:
+                last_height = new_height
+                scroll_attempts = 0
+                
+        else:
+            break
+            
+    print(f"Found {len(unique_rows)} bet rows.")
     
     processed_bets = 0
     wins = 0
@@ -72,63 +167,20 @@ def extract_and_analyze_bets(driver, bet_limit):
     total_won = 0.0
     total_lost = 0.0
     
-    # Dictionary to track duplicates: { "Bet Title": [ { "outcome": "...", "result": "...", "amount": ... } ] }
+    # Dictionary to track duplicates: { (title, outcome): [details] }
+    # Also track markets to detect hedging: { title: set(outcomes) }
     bet_history = {} 
-    
-    # Scroll logic if needed could go here, but for now we process what we find, assuming dynamic loading handling is complex without seeing the site.
-    # We will try to find rows.
-    
-    # Using a common container class selector guess or traversing up from status
-    # Let's try to identify the row element. 
-    # Usually a <div> or <a> tag wrapping the bet details.
-    
-    # We will iterate through status elements as they are distinct markers of a closed bet
-    # Note: status_elements might contain noise, so we validate.
-    
-    # To ensure we get the latest, we might need to re-query if the DOM updates, but simple iteration is a start.
-    
-    unique_rows = []
-    # Deduplicate elements based on location or parent
-    seen_parents = set()
-    
-    for status_el in status_elements:
-        try:
-            # Traverse up to find the row container (e.g., 3-5 levels up)
-            # Adjust 'xpath_parent' based on actual structure. 
-            # A good heuristic is a container that has the Title as well.
-            row = status_el.find_element(By.XPATH, "./ancestor::a | ./ancestor::div[contains(@class, 'grid') or contains(@class, 'flex')][position() < 6]")
-            
-            if row in seen_parents:
-                continue
-            
-            seen_parents.add(row)
-            unique_rows.append(row)
-            
-            if len(unique_rows) >= bet_limit:
-                break
-        except:
-            continue
-            
-    print(f"Found {len(unique_rows)} bet rows.")
+    market_outcomes = {}
     
     for row in unique_rows:
         try:
             text_content = row.text
             lines = text_content.split('\n')
             
-            # Simple parsing based on text structure
-            # Example: 
-            # "Spread: Texans (-9.5)"
-            # "Won 1.9 Chargers at 46¢"
-            
-            # OR
-            # "Spread: Texans (-9.5)"
-            # "Lost 212.4 Texans at 52¢"
+            if not lines: continue
             
             title = lines[0].strip()
             
-            # Parsing status and amount
-            # Searching for Won/Lost line
             status = "Unknown"
             amount_str = "0"
             outcome = "Unknown"
@@ -138,42 +190,6 @@ def extract_and_analyze_bets(driver, bet_limit):
             if "Won" in full_text:
                 status = "Won"
                 wins += 1
-                # Parse amount won
-                # Usually "Won $100" or "Won 100 USDC" or "Won 1.9 Chargers" ??
-                # The screenshot shows: "Won 1.9 Chargers at 46c" -> This implies 1.9 SHARES were won? Or 1.9 $? 
-                # "Lost 212.4 Texans at 52c" -> Lost $212.4? or shares?
-                # Usually Profit/Loss column shows the $ value.
-                # If the text says "Won 1.9 ...", it might be the profit.
-                # Let's look for a currency symbol or just parse the number after Won/Lost.
-                
-                # Regex or split might be needed.
-                # Let's try to find the number immediately following "Won" or "Lost".
-                parts = full_text.split()
-                if "Won" in parts:
-                    idx = parts.index("Won")
-                    if idx + 1 < len(parts):
-                        val_str = parts[idx+1].replace('$', '').replace(',', '')
-                        try:
-                            val = float(val_str)
-                            total_won += val
-                            amount_str = str(val)
-                        except:
-                            pass
-                            
-                # Outcome extraction
-                # In "Won 1.9 Chargers at 46c", "Chargers" is the outcome.
-                # In "Spread: Texans (-9.5)", the market is the spread.
-                # If I bet on Texans and it says "Won ... Chargers", maybe I bet on Chargers?
-                # The screenshot shows "Spread: Texans (-9.5)" and below "Won 1.9 Chargers...". 
-                # This implies the market is "Spread: Texans (-9.5)" but the outcome held was "Chargers" (the other side?).
-                # Or maybe the market title is just the event name.
-                # Let's assume the word after the amount is the outcome, or distinct line.
-                
-                # We need to capture the specific Outcome Scenario.
-                # Screenshot 1: "Spread: Texans (-9.5)" -> "Won 1.9 Chargers at 46c". Outcome: Chargers.
-                # Screenshot 2: "Spread: Texans (-9.5)" -> "Lost 212.4 Texans at 52c". Outcome: Texans.
-                
-                # Heuristic: Outcome is the text between the amount and "at".
                 try:
                     # Regex to find "Won <amount> <outcome> at" or "Lost <amount> <outcome> at"
                     match = re.search(r'(Won|Lost)\s+([\d\.,]+)\s+(.*?)\s+at', full_text)
@@ -181,36 +197,43 @@ def extract_and_analyze_bets(driver, bet_limit):
                         amount_str = match.group(2).replace(',', '')
                         outcome = match.group(3)
                         val = float(amount_str)
-                        if status == "Won":
-                            total_won += val
-                        else:
-                            total_lost += val
+                        total_won += val
                 except Exception as e:
-                    print(f"Regex error: {e}")
+                    # print(f"Regex error: {e}")
+                    pass
 
             elif "Lost" in full_text:
                 status = "Lost"
                 losses += 1
-                # Similar logic for lost
                 try:
                     match = re.search(r'(Won|Lost)\s+([\d\.,]+)\s+(.*?)\s+at', full_text)
                     if match:
-                        amount_str = match.group(2).replace(',', '') # Amount lost
+                        amount_str = match.group(2).replace(',', '')
                         outcome = match.group(3)
                         val = float(amount_str)
                         total_lost += val
                 except:
                     pass
+            else:
+                # Skip if neither won nor lost (e.g. pending/redeemed?)
+                continue
 
-            # Track for duplicates
-            if title not in bet_history:
-                bet_history[title] = []
+            # Track for duplicates (Same Title + Same Outcome)
+            key = (title, outcome)
+            if key not in bet_history:
+                bet_history[key] = []
             
-            bet_history[title].append({
+            bet_history[key].append({
+                "title": title,
                 "outcome": outcome,
                 "status": status,
                 "amount": amount_str
             })
+            
+            # Track for Hedging (Same Title, Any Outcome)
+            if title not in market_outcomes:
+                market_outcomes[title] = set()
+            market_outcomes[title].add(outcome)
             
         except Exception as e:
             print(f"Error parsing row: {e}")
@@ -218,18 +241,27 @@ def extract_and_analyze_bets(driver, bet_limit):
 
     # Analyze duplicates
     duplicates_info = []
-    for title, bets in bet_history.items():
+    
+    # Check for actual duplicates (same title, same outcome, count > 1)
+    for (title, outcome), bets in bet_history.items():
         if len(bets) > 1:
-            # Check if outcomes differ
-            outcomes = set(b['outcome'] for b in bets)
-            is_hedged = len(outcomes) > 1
-            
             duplicates_info.append({
                 "title": title,
+                "outcome": outcome,
                 "count": len(bets),
-                "outcomes": list(outcomes),
-                "hedged": is_hedged,
+                "type": "DUPLICATE", # Exact duplicate
                 "details": bets
+            })
+
+    # Check for Hedging (Same Title, Different Outcomes)
+    # We iterate over market_outcomes to see if any market has > 1 outcome
+    # Note: This is separate from "Duplicate Bets" count
+    hedged_markets = []
+    for title, outcomes in market_outcomes.items():
+        if len(outcomes) > 1:
+            hedged_markets.append({
+                "title": title,
+                "outcomes": list(outcomes)
             })
 
     return {
@@ -237,7 +269,8 @@ def extract_and_analyze_bets(driver, bet_limit):
         "losses": losses,
         "total_won": total_won,
         "total_lost": total_lost,
-        "duplicates": duplicates_info
+        "duplicates": duplicates_info,
+        "hedged_markets": hedged_markets
     }
 
 def navigate_and_sort_bets(driver, profile_url):
@@ -403,20 +436,24 @@ def main():
                          user_stat["Win Rate"] = (results['wins'] / total_bets) * 100
                      
                      if results['duplicates']:
-                         print(f"  Found {len(results['duplicates'])} duplicate bets:")
-                         dup_count = len(results['duplicates'])
-                         hedged_count = sum(1 for d in results['duplicates'] if d['hedged'])
+                         print(f"  Found {len(results['duplicates'])} duplicate bet groups:")
+                         dup_count = sum(d['count'] - 1 for d in results['duplicates']) # Count of extra bets
                          
-                         user_stat["Duplicate Bets"] = dup_count
-                         user_stat["Hedged Bets"] = hedged_count
+                         user_stat["Duplicate Bets"] = len(results['duplicates']) # Number of groups
                          
                          notes = []
                          for dup in results['duplicates']:
-                             hedged_str = " (HEDGED)" if dup['hedged'] else ""
-                             print(f"    - '{dup['title']}' appeared {dup['count']} times{hedged_str}")
-                             notes.append(f"{dup['title']} (x{dup['count']}){hedged_str}")
-                             if dup['hedged']:
-                                 print(f"      Outcomes: {', '.join(dup['outcomes'])}")
+                             print(f"    - '{dup['title']}' ({dup['outcome']}) appeared {dup['count']} times")
+                             notes.append(f"{dup['title']}/{dup['outcome']} (x{dup['count']})")
+                         
+                         # Add hedging info to notes
+                         if results['hedged_markets']:
+                             print(f"  Found {len(results['hedged_markets'])} hedged markets:")
+                             for h in results['hedged_markets']:
+                                 print(f"    - '{h['title']}' with outcomes: {', '.join(h['outcomes'])}")
+                                 notes.append(f"HEDGED: {h['title']} ({', '.join(h['outcomes'])})")
+                                 
+                         user_stat["Hedged Bets"] = len(results['hedged_markets'])
                          user_stat["Notes"] = "; ".join(notes)
                  else:
                      print("  No results found.")
