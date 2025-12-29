@@ -1,0 +1,768 @@
+Starting analysis with User Limit: 1, Bet Limit: None
+Loaded 200 users from polymarket_leaderboard_monthly.csv
+--- Processing User 1: SeriouslySirius ---
+Navigating to https://polymarket.com/profile/0x16b29c50f2439faf627209b2ac0c7bbddaa8a881...
+Clicked 'Closed' tab.
+Clicked Sort dropdown (Text: 'Profit/Loss').
+Selected 'Date' option.
+Extracting bets...
+Found 5599 bets.
+  Results for SeriouslySirius:
+  Wins: 4879, Losses: 720
+  Total Won: $127548121.80, Total Lost: $22047178.90
+  Found 215 duplicate bet groups:
+    - 'Positions' (Chargers) appeared 3 times
+    - 'Active' (Chargers) appeared 42 times
+    - 'Spread: Timberwolves (-11.5)' (Timberwolves) appeared 3 times
+    - 'Spread: Timberwolves (-10.5)' (Timberwolves) appeared 3 times
+    - 'Spread: Chargers (-2.5)' (Chargers) appeared 2 times
+    - 'Spread: Oilers (-1.5)' (Oilers) appeared 2 times
+    - 'Spread: Missouri (-4.5)' (Missouri) appeared 2 times
+    - 'Positions' (Under) appeared 31 times
+    - 'Active' (Under) appeared 496 times
+    - 'Spread: Spurs (-15.5)' (Spurs) appeared 2 times
+    - 'Spread: Suns (-3.5)' (Suns) appeared 2 times
+    - 'Positions' (Over) appeared 32 times
+    - 'Active' (Over) appeared 512 times
+    - 'Lightning vs. Panthers' (Lightning) appeared 2 times
+    - 'Suns vs. Pelicans' (Suns) appeared 2 times
+    - 'Positions' (Magic) appeared 4 times
+    - 'Active' (Magic) appeared 64 times
+    - 'Spread: Heat (-6.5)' (Heat) appeared 2 times
+    - 'Active' (Brighton & Hove Albion FC) appeared 16 times
+    - 'Spread: Thunder (-10.5)' (Thunder) appeared 2 times
+    - 'Positions' (Lions) appeared 2 times
+    - 'Active' (Lions) appeared 32 times
+    - 'Positions' (Grizzlies) appeared 3 times
+    - 'Active' (Grizzlies) appeared 48 times
+    - 'Spread: Thunder (-8.5)' (Thunder) appeared 2 times
+    - 'Spread: Warriors (-8.5)' (Warriors) appeared 2 times
+    - 'Cavaliers vs. Knicks' (Knicks) appeared 2 times
+    - 'Spread: Celtics (-8.5)' (Celtics) appeared 3 times
+    - 'Cavaliers vs. Knicks' (Cavaliers) appeared 2 times
+    - 'Spread: Hawks (-3.5)' (Hawks) appeared 2 times
+    - 'Positions' (Commanders) appeared 4 times
+    - 'Active' (Commanders) appeared 64 times
+    - 'Spread: Cavaliers (-9.5)' (Cavaliers) appeared 2 times
+    - 'Spread: Cavaliers (-7.5)' (Cavaliers) appeared 2 times
+    - 'Spread: Thunder (-15.5)' (Thunder) appeared 4 times
+    - 'Spread: 49ers (-4.5)' (49ers) appeared 2 times
+    - 'Spread: Magic (-2.5)' (Magic) appeared 3 times
+    - 'Bulls vs. Hawks' (Bulls) appeared 2 times
+    - 'Active' (Knicks) appeared 16 times
+    - 'Raptors vs. Heat' (Heat) appeared 2 times
+    - 'Raptors vs. Heat' (Raptors) appeared 2 times
+    - 'Spread: Rockets (-7.5)' (Rockets) appeared 2 times
+    - 'Spread: Lightning (-1.5)' (Lightning) appeared 2 times
+    - 'Active' (Clippers) appeared 16 times
+    - 'Spread: Bucks (-1.5)' (Bucks) appeared 2 times
+    - 'Active' (Nets) appeared 16 times
+    - 'Spread: 49ers (-5.5)' (49ers) appeared 2 times
+    - 'Spread: Predators (-1.5)' (Predators) appeared 2 times
+    - 'Spread: Celtics (-2.5)' (Celtics) appeared 2 times
+    - 'Positions' (Jets) appeared 2 times
+    - 'Active' (Jets) appeared 32 times
+    - 'Spread: Vikings (-2.5)' (Vikings) appeared 2 times
+    - 'Spread: Raptors (-4.5)' (Raptors) appeared 4 times
+    - 'Spread: Spurs (-16.5)' (Spurs) appeared 2 times
+    - 'Spread: Knicks (-7.5)' (Knicks) appeared 2 times
+    - 'Active' (Bucks) appeared 16 times
+    - 'Rockets vs. Nuggets: O/U 235.5' (Over) appeared 2 times
+    - 'Spread: Packers (-2.5)' (Packers) appeared 3 times
+    - 'Rockets vs. Nuggets' (Nuggets) appeared 2 times
+    - 'Active' (Sevilla FC) appeared 16 times
+    - 'Spread: Texas A&M (-3.5)' (Texas A&M) appeared 2 times
+    - 'Spread: Eagles (-7.5)' (Eagles) appeared 3 times
+    - 'Active' (Predators) appeared 16 times
+    - 'Spread: Cavaliers (-4.5)' (Cavaliers) appeared 2 times
+    - 'Spread: Cavaliers (-6.5)' (Cavaliers) appeared 5 times
+    - 'Active' (Beaudoin) appeared 16 times
+    - 'Spread: Lakers (-6.5)' (Lakers) appeared 2 times
+    - 'Spread: Celtics (-7.5)' (Celtics) appeared 2 times
+    - 'Spread: Knicks (-3.5)' (Knicks) appeared 3 times
+    - 'Spread: Knicks (-4.5)' (Knicks) appeared 3 times
+    - 'O/U 56.5' (Over) appeared 2 times
+    - 'Active' (Pistons) appeared 16 times
+    - 'Spread: Heat (-7.5)' (Heat) appeared 3 times
+    - 'Spread: Panthers (-1.5)' (Panthers) appeared 2 times
+    - 'Spread: Clippers (-2.5)' (Grizzlies) appeared 2 times
+    - 'Active' (Bulls) appeared 16 times
+    - 'Positions' (Blackhawks) appeared 2 times
+    - 'Active' (Blackhawks) appeared 32 times
+    - 'Kings vs. Stars' (Stars) appeared 2 times
+    - 'Spread: Knicks (-2.5)' (Knicks) appeared 3 times
+    - 'Spread: Mavericks (-1.5)' (Mavericks) appeared 2 times
+    - 'Active' (Rockets) appeared 16 times
+    - 'Spread: Clippers (-5.5)' (Grizzlies) appeared 2 times
+    - 'Pistons vs. Celtics' (Celtics) appeared 2 times
+    - 'Pistons vs. Celtics' (Pistons) appeared 2 times
+    - 'Spread: Lakers (-1.5)' (Lakers) appeared 3 times
+    - 'Positions' (Pelicans) appeared 3 times
+    - 'Active' (Pelicans) appeared 48 times
+    - 'Active' (Seahawks) appeared 16 times
+    - 'Active' (Chiefs) appeared 16 times
+    - 'Positions' (Eagles) appeared 2 times
+    - 'Active' (Eagles) appeared 32 times
+    - 'Lightning vs. Islanders: O/U 5.5' (Under) appeared 2 times
+    - 'Spread: Knicks (-5.5)' (Knicks) appeared 4 times
+    - 'Spread: Thunder (-9.5)' (Thunder) appeared 2 times
+    - 'Active' (Yes) appeared 16 times
+    - 'Spread: Thunder (-11.5)' (Thunder) appeared 2 times
+    - 'Spread: Bulls (-3.5)' (Hornets) appeared 2 times
+    - 'Bulls vs. Hornets' (Hornets) appeared 2 times
+    - 'Spread: 76ers (-6.5)' (76ers) appeared 2 times
+    - 'Positions' (Blues) appeared 2 times
+    - 'Active' (Blues) appeared 32 times
+    - 'Positions' (Penguins) appeared 2 times
+    - 'Active' (Penguins) appeared 32 times
+    - 'Spread: Oilers (-1.5)' (Sabres) appeared 2 times
+    - 'Spread: Magic (-1.5)' (Magic) appeared 2 times
+    - 'Active' (FC Barcelona) appeared 16 times
+    - 'Spread: Chargers (-3.5)' (Chargers) appeared 3 times
+    - 'Spread: Eagles (-2.5)' (Eagles) appeared 2 times
+    - 'Active' (Bengals) appeared 16 times
+    - 'Spread: Bills (-6.5)' (Bills) appeared 3 times
+    - 'Spread: Packers (-6.5)' (Packers) appeared 3 times
+    - 'Spread: Dolphins (-2.5)' (Dolphins) appeared 2 times
+    - 'Spread: Chiefs (-3.5)' (Chiefs) appeared 2 times
+    - 'Positions' (Browns) appeared 2 times
+    - 'Active' (Browns) appeared 32 times
+    - 'Spread: Grizzlies (-2.5)' (Grizzlies) appeared 2 times
+    - 'Positions' (Warriors) appeared 5 times
+    - 'Active' (Warriors) appeared 80 times
+    - 'O/U 50.5' (Under) appeared 3 times
+    - 'Spread: Timberwolves (-9.5)' (Timberwolves) appeared 2 times
+    - 'Spread: Virginia (-3.5)' (Duke) appeared 2 times
+    - 'Positions' (Leeds United) appeared 2 times
+    - 'Active' (Leeds United) appeared 32 times
+    - 'O/U 47.5' (Over) appeared 2 times
+    - 'Active' (Timberwolves) appeared 16 times
+    - 'Spread: 76ers (-2.5)' (Bucks) appeared 2 times
+    - 'Spread: 76ers (-2.5)' (76ers) appeared 2 times
+    - 'Spread: Kennesaw State (-2.5)' (Jacksonville State) appeared 2 times
+    - 'Spread: Kennesaw State (-2.5)' (Kennesaw State) appeared 2 times
+    - 'Spread: Capitals (-1.5)' (Capitals) appeared 3 times
+    - 'Active' (Senators) appeared 16 times
+    - 'Active' (Red Wings) appeared 16 times
+    - 'Spread: Knicks (-6.5)' (Knicks) appeared 3 times
+    - 'Active' (Girona) appeared 16 times
+    - 'Spread: Cavaliers (-6.5)' (Hawks) appeared 2 times
+    - 'Active' (Maple Leafs) appeared 16 times
+    - 'Spread: Bears (-2.5)' (Bears) appeared 2 times
+    - 'Spread: Texas Tech Red Raiders (-23.5)' (Texas Tech Red Raiders) appeared 2 times
+    - 'O/U 47.5' (Under) appeared 2 times
+    - 'Active' (Jacksonville State) appeared 16 times
+    - 'Oilers vs. Kraken' (Oilers) appeared 2 times
+    - 'Positions' (Bears) appeared 3 times
+    - 'Active' (Bears) appeared 48 times
+    - 'Active' (Rangers) appeared 16 times
+    - 'Spread: Ravens (-7.5)' (Ravens) appeared 3 times
+    - 'Bruins vs. Islanders' (Bruins) appeared 2 times
+    - 'Spread: Paris Saint-Germain FC (-1.5)' (Paris Saint-Germain FC) appeared 2 times
+    - 'Active' (Panthers) appeared 16 times
+    - 'Spread: Rockets (-6.5)' (Rockets) appeared 3 times
+    - 'Spread: Celtics (-4.5)' (Celtics) appeared 2 times
+    - 'Active' (North Texas) appeared 16 times
+    - 'Spread: Arsenal (-1.5)' (Arsenal) appeared 2 times
+    - 'Active' (Horiguchi) appeared 16 times
+    - 'Active' (TCU) appeared 16 times
+    - 'O/U 54.5' (Over) appeared 2 times
+    - 'Positions' (Pacers) appeared 2 times
+    - 'Active' (Pacers) appeared 32 times
+    - 'Active' (Lakers) appeared 16 times
+    - 'Spread: Spurs (-6.5)' (Spurs) appeared 2 times
+    - 'Positions' (Cavaliers) appeared 2 times
+    - 'Active' (Cavaliers) appeared 32 times
+    - 'Active' (Hawks) appeared 16 times
+    - 'Active' (Utah) appeared 16 times
+    - 'Spread: Cavaliers (-10.5)' (Cavaliers) appeared 2 times
+    - 'O/U 51.5' (Over) appeared 2 times
+    - 'Active' (UTEP) appeared 16 times
+    - 'Active' (South Carolina) appeared 16 times
+    - 'Spread: Eastern Michigan (-2.5)' (Eastern Michigan) appeared 2 times
+    - 'Active' (Troy) appeared 16 times
+    - 'Spread: Hawks (-2.5)' (Hawks) appeared 2 times
+    - 'Spread: Cavaliers (-6.5)' (Raptors) appeared 2 times
+    - 'Active' (Spurs) appeared 16 times
+    - 'Active' (Capitals) appeared 16 times
+    - 'Spread: Avalanche (-1.5)' (Avalanche) appeared 2 times
+    - 'Spread: Senators (-1.5)' (Senators) appeared 2 times
+    - 'Celtics vs. Magic' (Magic) appeared 2 times
+    - 'Positions' (Steelers) appeared 2 times
+    - 'Active' (Steelers) appeared 32 times
+    - 'Spread: Texans (-1.5)' (Texans) appeared 2 times
+    - 'Active' (Utah State) appeared 16 times
+    - 'Active' (Brown) appeared 16 times
+    - 'Active' (Louisiana) appeared 16 times
+    - 'Active' (Southern Miss) appeared 16 times
+    - 'Rockets vs. Spurs' (Spurs) appeared 2 times
+    - 'Active' (Seattle Sounders FC) appeared 16 times
+    - 'Active' (Trail Blazers) appeared 16 times
+    - 'Positions' (Hornets) appeared 2 times
+    - 'Active' (Hornets) appeared 32 times
+    - 'Active' (Paris Saint-Germain FC) appeared 16 times
+    - 'Active' (Oklahoma State) appeared 16 times
+    - 'Active' (Alencar) appeared 16 times
+    - 'Active' (Udinese) appeared 16 times
+    - 'Spread: Los Angeles Dodgers (-1.5)' (Los Angeles Dodgers) appeared 4 times
+    - 'Active' (Dodgers) appeared 16 times
+    - 'Dodgers vs. Blue Jays' (Dodgers) appeared 2 times
+    - 'Active' (Ravens) appeared 16 times
+    - 'Toronto Blue Jays vs. Los Angeles Dodgers: O/U 8.5' (Over) appeared 2 times
+    - 'Toronto Blue Jays vs. Los Angeles Dodgers: O/U 8.5' (Under) appeared 2 times
+    - 'Active' (Toronto Blue Jays) appeared 16 times
+    - 'Spread: Los Angeles Dodgers (-1.5)' (Toronto Blue Jays) appeared 3 times
+    - 'Blue Jays vs. Dodgers' (Blue Jays) appeared 2 times
+    - 'Blue Jays vs. Dodgers' (Dodgers) appeared 2 times
+    - 'Positions' (Celtics) appeared 2 times
+    - 'Active' (Celtics) appeared 32 times
+    - 'Active' (Mavericks) appeared 16 times
+    - 'Active' (No) appeared 16 times
+    - 'Active' (Los Angeles Dodgers) appeared 16 times
+    - 'Los Angeles Dodgers vs. Toronto Blue Jays: O/U 7.5' (Over) appeared 2 times
+    - 'Los Angeles Dodgers vs. Toronto Blue Jays: O/U 7.5' (Under) appeared 2 times
+    - 'Active' (Texas) appeared 16 times
+    - 'Active' (BYU) appeared 16 times
+    - 'Active' (Akron) appeared 16 times
+    - 'Active' (Salkilld) appeared 16 times
+    - 'Active' (Heat) appeared 16 times
+  Found 537 hedged markets:
+    - 'Positions' with outcomes: Over, Pelicans, Jacksonville State, Pistons, Brighton & Hove Albion FC, South Carolina, Southern Miss, Ravens, Maple Leafs, Bulls, Utah State, Blackhawks, TCU, Heat, Commanders, Eagles, Salkilld, Hawks, Horiguchi, Bengals, Warriors, Dodgers, Steelers, Mavericks, Bucks, Jets, No, FC Barcelona, Bears, Trail Blazers, Spurs, Leeds United, Knicks, Yes, Rockets, Penguins, Alencar, Girona, Capitals, Lakers, Senators, North Texas, Celtics, Red Wings, Predators, Hornets, Akron, Magic, Panthers, Louisiana, Oklahoma State, Chargers, Seahawks, Utah, Paris Saint-Germain FC, Under, Lions, Udinese, Browns, Brown, Nets, Pacers, Los Angeles Dodgers, Rangers, Troy, Texas, Cavaliers, Clippers, Chiefs, Sevilla FC, Blues, BYU, Grizzlies, Toronto Blue Jays, UTEP, Seattle Sounders FC, Timberwolves, Beaudoin
+    - 'Active' with outcomes: Over, Pelicans, Jacksonville State, Pistons, Brighton & Hove Albion FC, South Carolina, Southern Miss, Ravens, Maple Leafs, Bulls, Utah State, Blackhawks, TCU, Heat, Commanders, Eagles, Salkilld, Hawks, Horiguchi, Bengals, Warriors, Dodgers, Steelers, Mavericks, Bucks, Jets, No, FC Barcelona, Bears, Trail Blazers, Spurs, Leeds United, Knicks, Yes, Rockets, Penguins, Alencar, Girona, Capitals, Lakers, Senators, North Texas, Celtics, Red Wings, Predators, Hornets, Akron, Magic, Panthers, Louisiana, Oklahoma State, Chargers, Seahawks, Utah, Paris Saint-Germain FC, Under, Lions, Udinese, Browns, Brown, Nets, Pacers, Los Angeles Dodgers, Rangers, Troy, Texas, Cavaliers, Clippers, Chiefs, Sevilla FC, Blues, BYU, Grizzlies, Toronto Blue Jays, UTEP, Seattle Sounders FC, Timberwolves, Beaudoin
+    - 'Spread: Texans (-9.5)' with outcomes: Chargers, Texans
+    - 'Spread: Timberwolves (-11.5)' with outcomes: Timberwolves, Nets, Pacers
+    - 'Texans vs. Chargers: O/U 51.5' with outcomes: Under, Over
+    - 'Knicks vs. Hawks: O/U 241.5' with outcomes: Under, Over
+    - 'Spread: Timberwolves (-10.5)' with outcomes: Timberwolves, Nets, Suns
+    - 'LSU vs. Houston' with outcomes: Houston, LSU
+    - 'Spread: Suns (-5.5)' with outcomes: Pelicans, Suns
+    - 'Spread: Chargers (-2.5)' with outcomes: Jaguars, Chargers
+    - 'Spread: Ravens (-8.5)' with outcomes: Ravens, Browns
+    - 'Spread: Texans (-11.5)' with outcomes: Chargers, Texans
+    - 'Spread: Oilers (-1.5)' with outcomes: Sabres, Oilers, Penguins, Stars
+    - 'Texans vs. Chargers: O/U 40.5' with outcomes: Under, Over
+    - 'Spread: Missouri (-4.5)' with outcomes: Missouri, Virginia
+    - 'Spread: Texans (-6.5)' with outcomes: Chargers, Texans
+    - 'Spread: Spurs (-15.5)' with outcomes: Jazz, Spurs, Wizards
+    - 'North Texas vs. San Diego State' with outcomes: North Texas, San Diego State
+    - 'Spread: Fresno State (-5.5)' with outcomes: Fresno State, Miami (OH)
+    - 'Bucks vs. Bulls' with outcomes: Bulls, Bucks
+    - 'Spread: Chargers (-1.5)' with outcomes: Jaguars, Texans
+    - 'Jazz vs. Spurs: O/U 242.5' with outcomes: Under, Over
+    - 'Spread: North Texas (-6.5)' with outcomes: North Texas, San Diego State
+    - 'Spread: Suns (-3.5)' with outcomes: Suns, Clippers
+    - 'Spread: Knicks (-5.5)' with outcomes: 76ers, Hawks, Knicks, Pacers, Cavaliers
+    - 'Lightning vs. Panthers' with outcomes: Panthers, Lightning
+    - 'Spread: Packers (-3.5)' with outcomes: Broncos, Ravens, Packers, Steelers
+    - 'Suns vs. Pelicans' with outcomes: Pelicans, Suns
+    - 'Rangers vs. Islanders' with outcomes: Islanders, Rangers
+    - 'Spread: Nuggets (-4.5)' with outcomes: Nuggets, Magic, Trail Blazers, Hawks
+    - 'Spread: Spurs (-14.5)' with outcomes: Jazz, Spurs
+    - 'Spread: Mavericks (-2.5)' with outcomes: Jazz, Kings
+    - 'Spread: Heat (-6.5)' with outcomes: Nets, Heat
+    - 'Broncos vs. Chiefs: O/U 37.5' with outcomes: Under, Over
+    - 'Spread: UTSA Roadrunners (-6.5)' with outcomes: UTSA Roadrunners, Florida International
+    - 'Spread: Arsenal FC (-1.5)' with outcomes: Arsenal FC, Everton FC, Brighton & Hove Albion FC, Wolverhampton Wanderers FC
+    - 'Spread: Lions (-5.5)' with outcomes: Vikings, Lions
+    - 'Cavaliers vs. Knicks: O/U 237.5' with outcomes: Under, Over
+    - 'Spread: Thunder (-10.5)' with outcomes: Timberwolves, Thunder
+    - 'Cavaliers vs. Knicks: O/U 239.5' with outcomes: Under, Over
+    - 'Spread: Rockets (-3.5)' with outcomes: Lakers, Rockets
+    - 'Rockets vs. Lakers: O/U 232.5' with outcomes: Under, Over
+    - 'Florida International vs. UTSA Roadrunners: O/U 60.5' with outcomes: Under, Over
+    - 'Spread: Rockets (-4.5)' with outcomes: Lakers, Rockets
+    - 'Spread: Nuggets (-2.5)' with outcomes: Timberwolves, Nuggets
+    - 'Heat vs. Hawks: O/U 248.5' with outcomes: Under, Over
+    - 'Bucks vs. Grizzlies: O/U 228.5' with outcomes: Under, Over
+    - 'Timberwolves vs. Nuggets' with outcomes: Nuggets, Timberwolves
+    - 'Spread: Knicks (-4.5)' with outcomes: 76ers, Magic, Cavaliers, Knicks
+    - 'Hornets vs. Magic: O/U 230.5' with outcomes: Under, Over
+    - 'Spread: Thunder (-8.5)' with outcomes: Mavericks, Spurs, Hawks, Thunder
+    - 'Spread: Warriors (-8.5)' with outcomes: Trail Blazers, Warriors, Bucks
+    - 'Rockets vs. Lakers' with outcomes: Lakers, Rockets
+    - 'Spread: Lions (-6.5)' with outcomes: Vikings, Lions
+    - 'Spread: Lions (-7.5)' with outcomes: Vikings, Lions
+    - 'Spread: Celtics (-8.5)' with outcomes: Pacers, Celtics
+    - 'Broncos vs. Chiefs' with outcomes: Broncos, Chiefs
+    - 'Cavaliers vs. Knicks' with outcomes: Cavaliers, Knicks
+    - 'Spread: Hawks (-3.5)' with outcomes: Bulls, Hawks, Clippers
+    - 'California vs. Hawaii' with outcomes: Hawaii, California
+    - 'Nets vs. 76ers' with outcomes: Nets, 76ers
+    - 'Wizards vs. Hornets: O/U 233.5' with outcomes: Under, Over
+    - 'Thunder vs. Spurs' with outcomes: Spurs, Thunder
+    - 'Wizards vs. Hornets: O/U 239.5' with outcomes: Under, Over
+    - 'Spread: Timberwolves (-6.5)' with outcomes: Timberwolves, Knicks
+    - 'Spread: Celtics (-11.5)' with outcomes: Pacers, Celtics
+    - 'Bulls vs. Hawks' with outcomes: Bulls, Hawks
+    - 'Grizzlies vs. Thunder: O/U 230.5' with outcomes: Under, Over
+    - 'Pistons vs. Kings: O/U 227.5' with outcomes: Under, Over
+    - 'Pacers vs. Celtics: O/U 224.5' with outcomes: Under, Over
+    - 'Spread: Cavaliers (-9.5)' with outcomes: Warriors, Pelicans, Cavaliers
+    - 'Magic vs. Warriors: O/U 227.5' with outcomes: Under, Over
+    - 'Spread: 76ers (-10.5)' with outcomes: Nets, 76ers
+    - 'Spread: Cavaliers (-7.5)' with outcomes: Hornets, Warriors, Bulls, Raptors, Celtics, Cavaliers, Bucks
+    - 'Spread: Timberwolves (-7.5)' with outcomes: Knicks, Jazz, Celtics, Timberwolves, Grizzlies
+    - 'Spread: Timberwolves (-8.5)' with outcomes: Timberwolves, Suns
+    - 'Spread: Thunder (-15.5)' with outcomes: Mavericks, Suns, Trail Blazers, Thunder
+    - 'Spread: Devils (-1.5)' with outcomes: Islanders, Flyers, Devils, Canadiens, Blackhawks, Blue Jackets
+    - 'Spread: Magic (-2.5)' with outcomes: Pistons, Magic, 76ers
+    - 'Spread: Thunder (-5.5)' with outcomes: Spurs, Thunder
+    - 'Raptors vs. Heat' with outcomes: Raptors, Heat
+    - 'Spread: Rockets (-7.5)' with outcomes: Rockets, Clippers
+    - 'Bucks vs. Pacers' with outcomes: Pacers, Bucks
+    - 'Spread: Hornets (-5.5)' with outcomes: Nets, Hornets
+    - 'Spread: Lightning (-1.5)' with outcomes: Lightning, Canucks, Islanders, Rangers
+    - 'Spread: Bucks (-1.5)' with outcomes: Nets, Bucks
+    - 'Wizards vs. Hornets' with outcomes: Wizards, Hornets
+    - 'Washington State vs. Utah State' with outcomes: Washington State, Utah State
+    - 'Spread: 76ers (-9.5)' with outcomes: Nets, 76ers
+    - 'Spread: 49ers (-5.5)' with outcomes: 49ers, Browns
+    - 'Spread: Penguins (-1.5)' with outcomes: Predators, Maple Leafs, Canadiens, Penguins, Wild
+    - 'Rockets vs. Kings: O/U 222.5' with outcomes: Under, Over
+    - 'Spread: Lakers (-3.5)' with outcomes: Hawks, Clippers
+    - 'Spread: Hawks (-4.5)' with outcomes: 76ers, Bulls
+    - 'Patriots vs. Ravens: O/U 48.5' with outcomes: Under, Over
+    - 'Spread: Ravens (-2.5)' with outcomes: Patriots, Ravens, Bears, Bengals
+    - 'Spread: Ravens (-3.5)' with outcomes: Patriots, Ravens, Bengals
+    - 'Spread: Rockets (-12.5)' with outcomes: Mavericks, Rockets, Kings
+    - 'Patriots vs. Ravens' with outcomes: Patriots, Ravens
+    - 'Bills vs. Browns: O/U 40.5' with outcomes: Under, Over
+    - 'Spread: Falcons (-3.5)' with outcomes: Cardinals, Falcons
+    - 'Spread: Broncos (-3.5)' with outcomes: Broncos, Jaguars, Cowboys
+    - 'Canadiens vs. Penguins' with outcomes: Canadiens, Penguins
+    - 'Spread: Chiefs (-3.5)' with outcomes: Chiefs, Texans, Titans, Broncos, Colts, Cowboys
+    - 'Spread: Raptors (-4.5)' with outcomes: Raptors, Trail Blazers
+    - 'Spread: Chiefs (-4.5)' with outcomes: Chiefs, Texans, Titans
+    - 'Bills vs. Browns: O/U 41.5' with outcomes: Under, Over
+    - 'Spread: Spurs (-16.5)' with outcomes: Spurs, Wizards
+    - 'Steelers vs. Lions: O/U 52.5' with outcomes: Under, Over
+    - 'Spread: Cowboys (-2.5)' with outcomes: Chargers, Cowboys
+    - 'Spread: Knicks (-7.5)' with outcomes: Mavericks, Heat, Knicks
+    - 'Steelers vs. Lions' with outcomes: Lions, Steelers
+    - 'Spread: Bengals (-4.5)' with outcomes: Bengals, Dolphins
+    - 'Spurs vs. Wizards: O/U 237.5' with outcomes: Under, Over
+    - 'Spread: Bills (-8.5)' with outcomes: Bills, Dolphins, Browns
+    - 'Spread: Cowboys (-1.5)' with outcomes: Chargers, Cowboys
+    - 'Spread: Timberwolves (-12.5)' with outcomes: Pacers, Bucks
+    - 'Jets vs. Saints: O/U 40.5' with outcomes: Under, Over
+    - 'Spread: Buccaneers (-2.5)' with outcomes: Patriots, Panthers, Buccaneers, Falcons
+    - 'Raptors vs. Nets' with outcomes: Raptors, Nets
+    - 'Spread: Bills (-10.5)' with outcomes: Bills, Browns
+    - 'Spread: Saints (-6.5)' with outcomes: Jets, Saints
+    - 'Heat vs. Knicks' with outcomes: Heat, Knicks
+    - 'Spread: Grizzlies (-12.5)' with outcomes: Wizards, Grizzlies
+    - 'Rockets vs. Nuggets: O/U 235.5' with outcomes: Under, Over
+    - 'Red Wings vs. Capitals: O/U 5.5' with outcomes: Under, Over
+    - 'Spread: Celtics (-1.5)' with outcomes: Pistons, Raptors, Celtics
+    - 'Spread: Nuggets (-1.5)' with outcomes: Nuggets, Rockets
+    - 'Spread: Bears (-1.5)' with outcomes: Bears, Packers
+    - 'Spread: Packers (-2.5)' with outcomes: Lions, Packers
+    - 'Blue Jackets vs. Ducks: O/U 6.5' with outcomes: Under, Over
+    - 'Suns vs. Warriors' with outcomes: Warriors, Suns
+    - 'Spread: Magic (-8.5)' with outcomes: Jazz, Spurs
+    - 'Hornets vs. Pistons: O/U 234.5' with outcomes: Under, Over
+    - 'Spread: Real Madrid CF (-2.5)' with outcomes: Real Madrid CF, Sevilla FC
+    - 'Spread: Texas A&M (-3.5)' with outcomes: Texas, Texas A&M
+    - 'Miami vs. Texas A&M' with outcomes: Texas A&M, Miami
+    - 'Spread: Oregon (-21.5)' with outcomes: Oregon, James Madison
+    - 'Packers vs. Bears' with outcomes: Bears, Packers
+    - 'Spread: Eagles (-7.5)' with outcomes: Eagles, Giants
+    - 'Lakers vs. Clippers: O/U 229.5' with outcomes: Under, Over
+    - 'Celtics vs. Raptors' with outcomes: Raptors, Celtics
+    - 'Spread: Pelicans (-2.5)' with outcomes: Pelicans, Celtics
+    - 'Spread: Lakers (-2.5)' with outcomes: Suns, Clippers
+    - 'Spread: Seahawks (-3.5)' with outcomes: Rams, Commanders
+    - 'Spread: Flames (-1.5)' with outcomes: Sharks, Flames
+    - 'Spread: Cavaliers (-4.5)' with outcomes: Celtics, Bulls, Cavaliers
+    - 'Bulls vs. Cavaliers: O/U 237.5' with outcomes: Under, Over
+    - 'Spread: Celtics (-5.5)' with outcomes: Celtics, Heat, Clippers
+    - '76ers vs. Knicks' with outcomes: 76ers, Knicks
+    - 'Spread: Cavaliers (-6.5)' with outcomes: Bulls, Hawks, Raptors, Cavaliers, Bucks
+    - 'Spread: Islanders (-1.5)' with outcomes: Islanders, Bruins, Sharks, Canucks, Wild
+    - 'Who will win Alycia Baumgardner vs Leila Beaudoin?' with outcomes: Baumgardner, Beaudoin
+    - 'Spread: Celtics (-7.5)' with outcomes: Celtics, Heat
+    - 'Spread: Lakers (-6.5)' with outcomes: Lakers, Suns
+    - 'O/U 40.5' with outcomes: Under, Over
+    - 'Spurs vs. Hawks' with outcomes: Spurs, Hawks
+    - 'Alabama vs. Oklahoma' with outcomes: Oklahoma, Alabama
+    - 'Alabama vs. Oklahoma: O/U 41.5' with outcomes: Under, Over
+    - 'Spread: Knicks (-3.5)' with outcomes: Magic, Pacers, Knicks
+    - 'Stars vs. Sharks: O/U 5.5' with outcomes: Under, Over
+    - 'Spread: Warriors (-1.5)' with outcomes: Trail Blazers, Warriors, Suns
+    - 'Spread: Pistons (-7.5)' with outcomes: Pistons, Mavericks
+    - 'Hawks vs. Hornets' with outcomes: Hornets, Hawks
+    - 'Spread: Clippers (-3.5)' with outcomes: Mavericks, Grizzlies, Clippers
+    - 'Spread: Louisiana-Lafayette (-3.5)' with outcomes: Delaware Fightin Blue Hens, Louisiana-Lafayette
+    - 'Spread: Louisiana-Lafayette (-1.5)' with outcomes: Delaware Fightin Blue Hens, Louisiana-Lafayette
+    - 'Spread: Panthers (-1.5)' with outcomes: Bruins, Panthers, Kings
+    - 'Grizzlies vs. Timberwolves: O/U 232.5' with outcomes: Under, Over
+    - 'Spread: Clippers (-2.5)' with outcomes: Warriors, Grizzlies, Clippers
+    - 'Kings vs. Panthers' with outcomes: Panthers, Kings
+    - 'Cavaliers vs. Bulls' with outcomes: Bulls, Cavaliers
+    - 'Grizzlies vs. Timberwolves: O/U 227.5' with outcomes: Under, Over
+    - 'Louisiana-Lafayette vs. Delaware Fightin' Blue Hens' with outcomes: Delaware Fightin Blue Hens, Louisiana-Lafayette
+    - 'Spread: Maple Leafs (-1.5)' with outcomes: Sabres, Blackhawks, Flames
+    - 'Kings vs. Stars' with outcomes: Kings, Stars
+    - 'Rockets vs. Nuggets: O/U 233.5' with outcomes: Under, Over
+    - 'Spread: Red Wings (-1.5)' with outcomes: Rangers, Islanders, Red Wings
+    - 'Spread: Wild (-1.5)' with outcomes: Sabres, Senators, Penguins, Capitals
+    - 'Spread: Mavericks (-1.5)' with outcomes: Jazz, Mavericks
+    - 'Spread: Knicks (-2.5)' with outcomes: Magic, Cavaliers, Knicks
+    - 'Utah vs. Bruins' with outcomes: Bruins, Utah
+    - 'Spread: Troy (-1.5)' with outcomes: Jacksonville State, Troy
+    - 'Dolphins vs. Steelers: O/U 42.5' with outcomes: Under, Over
+    - 'Grizzlies vs. Clippers' with outcomes: Grizzlies, Clippers
+    - 'Spread: Heat (-5.5)' with outcomes: Raptors, Hornets
+    - 'Mavericks vs. Jazz: O/U 240.5' with outcomes: Under, Over
+    - 'Spread: Clippers (-5.5)' with outcomes: Hawks, Grizzlies
+    - 'Pistons vs. Celtics' with outcomes: Pistons, Celtics
+    - '76ers vs. Hawks: O/U 225.5' with outcomes: Under, Over
+    - 'Spread: Lakers (-1.5)' with outcomes: Lakers, Grizzlies
+    - 'Panthers vs. Saints: O/U 39.5' with outcomes: Under, Over
+    - 'Warriors vs. Trail Blazers: O/U 235.5' with outcomes: Under, Over
+    - '76ers vs. Hawks: O/U 231.5' with outcomes: Under, Over
+    - 'Pelicans vs. Bulls: O/U 244.5' with outcomes: Under, Over
+    - 'Lions vs. Rams: O/U 54.5' with outcomes: Under, Over
+    - 'Spread: Patriots (-6.5)' with outcomes: Bills, Patriots
+    - 'Spread: Seahawks (-12.5)' with outcomes: Seahawks, Colts, Titans
+    - 'Spread: Seahawks (-11.5)' with outcomes: Seahawks, Titans
+    - 'Spread: Cowboys (-5.5)' with outcomes: Vikings, Cowboys
+    - 'Spread: Seahawks (-13.5)' with outcomes: Colts, Titans
+    - 'Colts vs. Seahawks' with outcomes: Seahawks, Colts
+    - 'Spread: 49ers (-13.5)' with outcomes: 49ers, Titans
+    - 'Lions vs. Rams' with outcomes: Rams, Lions
+    - 'Spread: Rams (-6.5)' with outcomes: Rams, Lions
+    - 'Lakers vs. Suns' with outcomes: Lakers, Suns
+    - 'Packers vs. Broncos' with outcomes: Broncos, Packers
+    - 'Bucks vs. Nets' with outcomes: Nets, Bucks
+    - 'Spread: Patriots (-3.5)' with outcomes: Patriots, Bills
+    - 'Commanders vs. Giants: O/U 44.5' with outcomes: Under, Over
+    - 'Commanders vs. Giants: O/U 43.5' with outcomes: Under, Over
+    - 'Ravens vs. Bengals: O/U 37.5' with outcomes: Under, Over
+    - 'Ravens vs. Bengals' with outcomes: Ravens, Bengals
+    - 'Wizards vs. Pacers' with outcomes: Wizards, Pacers
+    - 'Spread: Bears (-7.5)' with outcomes: Bears, Browns
+    - 'Commanders vs. Giants' with outcomes: Giants, Commanders
+    - 'Spread: Giants (-2.5)' with outcomes: Giants, Commanders
+    - 'Bills vs. Patriots' with outcomes: Patriots, Bills
+    - 'Spread: Eagles (-12.5)' with outcomes: Raiders, Eagles
+    - 'Bills vs. Patriots: O/U 52.5' with outcomes: Under, Over
+    - 'Spread: Kings (-1.5)' with outcomes: Predators, Kings, Capitals, Flames
+    - 'Spread: Stars (-1.5)' with outcomes: Panthers, Kings, Penguins, Capitals
+    - 'Lightning vs. Islanders: O/U 5.5' with outcomes: Under, Over
+    - 'Spread: Thunder (-9.5)' with outcomes: Kings, Thunder
+    - 'O/U 38.5' with outcomes: Under, Over
+    - 'Knicks vs. Magic' with outcomes: Magic, Knicks
+    - 'Spurs vs. Thunder' with outcomes: Spurs, Thunder
+    - 'Spread: Thunder (-11.5)' with outcomes: Spurs, Trail Blazers, Grizzlies, Thunder
+    - 'Pacers vs. 76ers: O/U 229.5' with outcomes: Under, Over
+    - 'Hawks vs. Pistons' with outcomes: Pistons, Hawks
+    - 'Cavaliers vs. Wizards: O/U 243.5' with outcomes: Under, Over
+    - 'Bulls vs. Hornets: O/U 228.5' with outcomes: Under, Over
+    - 'Cavaliers vs. Wizards' with outcomes: Wizards, Cavaliers
+    - 'Pacers vs. 76ers: O/U 226.5' with outcomes: Under, Over
+    - 'Spread: Blues (-1.5)' with outcomes: Blackhawks, Utah, Penguins, Flames
+    - 'Bulls vs. Hornets' with outcomes: Hornets, Bulls
+    - 'Bulls vs. Hornets: O/U 229.5' with outcomes: Under, Over
+    - 'Spread: Bulls (-3.5)' with outcomes: Hornets, Trail Blazers
+    - 'Spread: Mavericks (-7.5)' with outcomes: Mavericks, Pelicans, Pacers
+    - 'Pacers vs. 76ers' with outcomes: 76ers, Pacers
+    - 'Blues vs. Predators' with outcomes: Predators, Blues
+    - 'Stars vs. Wild' with outcomes: Stars, Wild
+    - 'Hurricanes vs. Capitals' with outcomes: Capitals, Hurricanes
+    - 'Celtics vs. Bucks: O/U 224.5' with outcomes: Under, Over
+    - 'Spread: Buccaneers (-3.5)' with outcomes: Buccaneers, Falcons
+    - 'Celtics vs. Bucks: O/U 223.5' with outcomes: Under, Over
+    - 'Spread: Trail Blazers (-3.5)' with outcomes: Jazz, Trail Blazers
+    - 'Hurricanes vs. Capitals: O/U 5.5' with outcomes: Under, Over
+    - 'Falcons vs. Buccaneers' with outcomes: Buccaneers, Falcons
+    - 'Spread: Rockets (-8.5)' with outcomes: Mavericks, Rockets, Magic, Clippers
+    - 'Spread: Nuggets (-10.5)' with outcomes: Nuggets, Kings
+    - 'Spread: Buccaneers (-5.5)' with outcomes: Buccaneers, Saints
+    - 'Spread: Rockets (-9.5)' with outcomes: Mavericks, Clippers
+    - 'Spread: Buccaneers (-4.5)' with outcomes: Buccaneers, Falcons
+    - 'Spread: Rangers (-1.5)' with outcomes: Blackhawks, Lightning, Islanders, Flames
+    - 'Suns vs. Thunder: O/U 221.5' with outcomes: Under, Over
+    - 'Kings vs. Kraken' with outcomes: Kraken, Kings
+    - 'Spread: Ducks (-1.5)' with outcomes: Canucks, Penguins, Red Wings, Ducks
+    - 'Spread: Avalanche (-1.5)' with outcomes: Predators, Islanders, Avalanche
+    - 'Ducks vs. Penguins' with outcomes: Ducks, Penguins
+    - 'Kings vs. Pacers: O/U 235.5' with outcomes: Under, Over
+    - 'Kings vs. Pacers: O/U 232.5' with outcomes: Under, Over
+    - 'Spread: Sabres (-1.5)' with outcomes: Blue Jackets, Blues, Flames
+    - 'Spread: Chargers (-3.5)' with outcomes: Jaguars, Chargers, Vikings, Steelers
+    - 'Spread: Eagles (-2.5)' with outcomes: Chargers, Eagles
+    - 'Kings vs. Pacers' with outcomes: Kings, Pacers
+    - 'Spread: Eagles (-1.5)' with outcomes: Chargers, Eagles
+    - 'Kings vs. Pacers: O/U 233.5' with outcomes: Under, Over
+    - 'Eagles vs. Chargers' with outcomes: Chargers, Eagles
+    - 'Spread: Timberwolves (-9.5)' with outcomes: Timberwolves, Suns, Clippers
+    - 'Spread: Broncos (-10.5)' with outcomes: Broncos, Raiders
+    - 'Magic vs. Knicks: O/U 229.5' with outcomes: Under, Over
+    - 'Spread: Bills (-6.5)' with outcomes: Bills, Bengals, Buccaneers, Texans
+    - 'Spread: Packers (-7.5)' with outcomes: Bears, Packers
+    - 'Spread: Broncos (-8.5)' with outcomes: Broncos, Raiders
+    - 'Spread: Packers (-6.5)' with outcomes: Bears, Packers
+    - 'Spread: Dolphins (-2.5)' with outcomes: Dolphins, Commanders
+    - 'Dolphins vs. Jets: O/U 42.5' with outcomes: Under, Over
+    - 'Spread: Hurricanes (-1.5)' with outcomes: Sharks, Capitals, Golden Knights, Wild, Hurricanes
+    - 'Spread: Broncos (-7.5)' with outcomes: Broncos, Raiders
+    - 'Spread: Lakers (-4.5)' with outcomes: Heat, 76ers, Hawks
+    - 'Spread: Colts (-1.5)' with outcomes: Jaguars, Colts
+    - 'Spread: Ravens (-6.5)' with outcomes: Ravens, Bears, Dolphins, Steelers
+    - 'Titans vs. Browns' with outcomes: Titans, Browns
+    - 'Spread: Grizzlies (-2.5)' with outcomes: Heat, Suns, Grizzlies
+    - 'UFC 323: Silva vs. Barber (Women's Flyweight, Prelims)' with outcomes: Barber, Silva
+    - 'Kings vs. Heat: O/U 241.5' with outcomes: Under, Over
+    - 'Spread: Western Michigan (-2.5)' with outcomes: Western Michigan, Miami (OH)
+    - 'Spread: Cavaliers (-8.5)' with outcomes: Warriors, Cavaliers
+    - 'O/U 50.5' with outcomes: Under, Over
+    - 'Spread: Texas Tech Red Raiders (-13.5)' with outcomes: Texas Tech Red Raiders, BYU
+    - 'Spread: Virginia (-3.5)' with outcomes: Virginia, Duke
+    - 'Spread: Liverpool (-1.5)' with outcomes: Leeds United, Nottingham Forest
+    - 'O/U 47.5' with outcomes: Under, Over
+    - 'Spread: Pistons (-12.5)' with outcomes: Wizards, Bucks
+    - 'Duke vs. Virginia' with outcomes: Virginia, Duke
+    - 'Spread: Ohio State (-3.5)' with outcomes: Indiana, Ohio State
+    - 'Spread: Golden Knights (-1.5)' with outcomes: Lightning, Golden Knights, Panthers, Red Wings
+    - 'Spread: 76ers (-2.5)' with outcomes: Raptors, 76ers, Bucks
+    - 'Lakers vs. Celtics: O/U 228.5' with outcomes: Under, Over
+    - 'Spread: Nuggets (-5.5)' with outcomes: Timberwolves, Nuggets, Hawks
+    - 'Spread: Kennesaw State (-2.5)' with outcomes: Jacksonville State, Kennesaw State
+    - 'Spread: Thunder (-14.5)' with outcomes: Mavericks, Thunder
+    - 'Cowboys vs. Lions: O/U 56.5' with outcomes: Under, Over
+    - 'Spread: 76ers (-4.5)' with outcomes: 76ers, Clippers
+    - 'Spread: Lions (-4.5)' with outcomes: Lions, Cowboys
+    - 'Cowboys vs. Lions' with outcomes: Lions, Cowboys
+    - 'Spread: Lions (-3.5)' with outcomes: Lions, Cowboys
+    - 'Spread: Capitals (-1.5)' with outcomes: Penguins, Capitals
+    - 'Spread: Hawks (-2.5)' with outcomes: Jazz, Bulls, Hawks, Clippers
+    - 'Heat vs. Mavericks: O/U 240.5' with outcomes: Under, Over
+    - 'Spread: Bulls (-7.5)' with outcomes: Nets, Bulls
+    - 'Spread: Pistons (-3.5)' with outcomes: Pistons, Magic, Celtics, Bucks
+    - 'Spread: Nuggets (-8.5)' with outcomes: Nuggets, Spurs, Kings, Pacers
+    - 'Spread: Canadiens (-1.5)' with outcomes: Senators, Kraken, Flames
+    - 'Thunder vs. Warriors: O/U 223.5' with outcomes: Under, Over
+    - 'Bucks vs. Wizards: O/U 232.5' with outcomes: Under, Over
+    - 'Spread: Bucks (-9.5)' with outcomes: Wizards, Hornets, Bucks
+    - 'Cavaliers vs. Pacers' with outcomes: Pacers, Cavaliers
+    - 'Hawks vs. Pistons: O/U 232.5' with outcomes: Under, Over
+    - 'Ducks vs. Blues: O/U 6.5' with outcomes: Under, Over
+    - 'Spread: Lakers (-5.5)' with outcomes: Lakers, Suns
+    - 'Spread: Lakers (-15.5)' with outcomes: Lakers, Pelicans
+    - 'Spread: Broncos (-6.5)' with outcomes: Broncos, Commanders
+    - 'Broncos vs. Commanders: O/U 43.5' with outcomes: Under, Over
+    - 'Raiders vs. Chargers' with outcomes: Raiders, Chargers
+    - 'Spread: Colts (-3.5)' with outcomes: Colts, Texans, Steelers
+    - '49ers vs. Browns: O/U 35.5' with outcomes: Under, Over
+    - 'Texans vs. Colts' with outcomes: Colts, Texans
+    - 'Saints vs. Dolphins: O/U 42.5' with outcomes: Under, Over
+    - 'Spread: Dolphins (-5.5)' with outcomes: Saints, Dolphins
+    - 'Texans vs. Colts: O/U 44.5' with outcomes: Under, Over
+    - 'Spread: Jaguars (-6.5)' with outcomes: Jaguars, Titans
+    - 'Spread: Inter Miami CF (-1.5)' with outcomes: Nashville SC, New York City FC, Inter Miami CF
+    - 'Spread: Pistons (-4.5)' with outcomes: Magic, 76ers
+    - 'Oregon vs. Washington: O/U 51.5' with outcomes: Under, Over
+    - 'Kennesaw State vs. Liberty' with outcomes: Kennesaw State, Liberty
+    - 'UFC 322: Haddon vs. Wellmaker (Bantamweight, Prelims)' with outcomes: Haddon, Wellmaker
+    - 'Spread: Missouri (-3.5)' with outcomes: Missouri, Arkansas
+    - 'Spread: Warriors (-7.5)' with outcomes: Trail Blazers, Warriors
+    - 'Spread: Manchester City (-1.5)' with outcomes: Leeds United, Manchester City
+    - 'Spread: Florida International (-10.5)' with outcomes: Florida International, Sam Houston Bearkats
+    - 'Spread: Penn State (-13.5)' with outcomes: Penn State, Rutgers
+    - 'Spread: Miami (-6.5)' with outcomes: Pittsburgh, Miami
+    - 'Spread: Baylor (-2.5)' with outcomes: Baylor, Houston
+    - 'Wizards vs. Pacers: O/U 240.5' with outcomes: Under, Over
+    - 'Mavericks vs. Lakers: O/U 232.5' with outcomes: Under, Over
+    - 'Bears vs. Eagles' with outcomes: Bears, Eagles
+    - 'Magic vs. Pistons' with outcomes: Pistons, Magic
+    - 'Spread: Clippers (-7.5)' with outcomes: Heat, Grizzlies, Clippers
+    - 'O/U 59.5' with outcomes: Under, Over
+    - 'Spread: Texas A&M (-2.5)' with outcomes: LSU, Texas, Texas A&M
+    - 'Spread: Memphis (-4.5)' with outcomes: Navy, Memphis
+    - 'Kent State Golden Flashes vs. Northern Illinois' with outcomes: Northern Illinois, Kent State Golden Flashes
+    - 'Spread: Ravens (-7.5)' with outcomes: Ravens, Bears, Bengals, Dolphins
+    - 'Spurs vs. Trail Blazers: O/U 240.5' with outcomes: Under, Over
+    - 'Spread: Blue Jackets (-1.5)' with outcomes: Blue Jackets, Maple Leafs
+    - 'Spread: Paris Saint-Germain FC (-1.5)' with outcomes: Tottenham Hotspur FC, OGC Nice, Paris Saint-Germain FC
+    - 'Maple Leafs vs. Blue Jackets' with outcomes: Blue Jackets, Maple Leafs
+    - 'Spread: Grizzlies (-3.5)' with outcomes: Pelicans, Grizzlies
+    - 'Spread: Warriors (-2.5)' with outcomes: Rockets, Trail Blazers, Warriors
+    - 'Spread: Manchester City FC (-1.5)' with outcomes: Bayer 04 Leverkusen, Manchester City FC
+    - 'Panthers vs. 49ers: O/U 48.5' with outcomes: Under, Over
+    - 'Spread: 49ers (-9.5)' with outcomes: Panthers, 49ers
+    - 'Spread: Pistons (-9.5)' with outcomes: Pistons, Pacers
+    - 'Nuggets vs. Grizzlies' with outcomes: Nuggets, Grizzlies
+    - 'Spread: Warriors (-13.5)' with outcomes: Jazz, Warriors
+    - 'Spread: 49ers (-7.5)' with outcomes: Panthers, 49ers
+    - 'Spread: Rockets (-6.5)' with outcomes: Pistons, Rockets, Celtics
+    - 'Spurs vs. Suns: O/U 233.5' with outcomes: Under, Over
+    - 'Spread: Bruins (-1.5)' with outcomes: Bruins, Sharks
+    - 'Falcons vs. Saints' with outcomes: Falcons, Saints
+    - 'Spread: Eagles (-4.5)' with outcomes: Eagles, Cowboys
+    - 'Buccaneers vs. Rams' with outcomes: Buccaneers, Rams
+    - 'Steelers vs. Bears' with outcomes: Bears, Steelers
+    - 'Spread: Arsenal (-1.5)' with outcomes: Crystal Palace, Tottenham, Arsenal, Sunderland AFC
+    - 'Spread: South Florida (-21.5)' with outcomes: South Florida, UAB Blazers
+    - 'Kraken vs. Penguins' with outcomes: Kraken, Penguins
+    - 'Spread: Georgia Tech (-2.5)' with outcomes: Georgia Tech, Pittsburgh
+    - 'Spread: Miami (-18.5)' with outcomes: Virginia Tech, Miami
+    - 'Clippers vs. Hornets' with outcomes: Hornets, Clippers
+    - 'BYU vs. Cincinnati' with outcomes: Cincinnati, BYU
+    - 'Wizards vs. Bulls: O/U 244.5' with outcomes: Under, Over
+    - 'Golden Knights vs. Ducks' with outcomes: Golden Knights, Ducks
+    - 'Hurricanes vs. Jets' with outcomes: Jets, Hurricanes
+    - 'Timberwolves vs. Suns' with outcomes: Timberwolves, Suns
+    - 'Hawaii vs. UNLV' with outcomes: Hawaii, UNLV
+    - 'Spread: Celtics (-14.5)' with outcomes: Nets, Celtics
+    - 'Florida State vs. NC State' with outcomes: NC State, Florida State
+    - 'Spread: Warriors (-10.5)' with outcomes: Pelicans, Trail Blazers, Warriors
+    - 'O/U 54.5' with outcomes: Under, Over
+    - 'Spread: Magic (-5.5)' with outcomes: Magic, Bulls
+    - 'Stars vs. Canucks: O/U 6.5' with outcomes: Under, Over
+    - 'Kings vs. Grizzlies: O/U 234.5' with outcomes: Under, Over
+    - 'Spread: Nuggets (-14.5)' with outcomes: Pelicans, Bulls
+    - 'Spread: Pacers (-1.5)' with outcomes: Pacers, Grizzlies
+    - 'Spread: Thunder (-18.5)' with outcomes: Pelicans, Kings
+    - 'Spread: Warriors (-3.5)' with outcomes: Trail Blazers, Warriors, Bucks
+    - 'Pistons vs. Hawks' with outcomes: Pistons, Hawks
+    - 'Spread: Hawks (-1.5)' with outcomes: Pistons, Jazz
+    - 'Spread: Spurs (-6.5)' with outcomes: Spurs, Grizzlies
+    - 'Cowboys vs. Raiders: O/U 49.5' with outcomes: Under, Over
+    - 'Spread: Cowboys (-3.5)' with outcomes: Raiders, Cardinals, Cowboys
+    - 'Kings vs. Capitals' with outcomes: Kings, Capitals
+    - 'Spread: Suns (-2.5)' with outcomes: Hawks, Clippers
+    - 'Trail Blazers vs. Mavericks: O/U 233.5' with outcomes: Under, Over
+    - 'Spread: Steelers (-6.5)' with outcomes: Bengals, Steelers
+    - 'Bengals vs. Steelers: O/U 49.5' with outcomes: Under, Over
+    - 'Spread: Spurs (-8.5)' with outcomes: Spurs, Kings
+    - 'Spread: Warriors (-11.5)' with outcomes: Warriors, Suns
+    - 'Packers vs. Giants: O/U 42.5' with outcomes: Under, Over
+    - 'Commanders vs. Dolphins' with outcomes: Dolphins, Commanders
+    - 'Predators vs. Penguins' with outcomes: Predators, Penguins
+    - 'Spread: Liberty (-3.5)' with outcomes: Florida International, Liberty
+    - 'Nuggets vs. Timberwolves: O/U 237.5' with outcomes: Under, Over
+    - 'Spread: James Madison (-21.5)' with outcomes: Appalachian State, James Madison
+    - 'Spread: Jets (-1.5)' with outcomes: Sharks, Flames
+    - 'Spread: Georgia (-4.5)' with outcomes: Texas, Georgia
+    - 'O/U 51.5' with outcomes: Under, Over
+    - 'Spread: BYU (-3.5)' with outcomes: TCU, BYU
+    - 'UTEP vs. Missouri State' with outcomes: Missouri State, UTEP
+    - 'UFC 322: Edwards vs. Prates (Welterweight, Main Card)' with outcomes: Edwards, Prates
+    - 'Sharks vs. Kraken' with outcomes: Kraken, Sharks
+    - 'Texas vs. Georgia: O/U 49.5' with outcomes: Under, Over
+    - 'Spread: Eastern Michigan (-2.5)' with outcomes: Bowling, Eastern Michigan
+    - 'Spread: Magic (-13.5)' with outcomes: Magic, Nets
+    - 'Heat vs. Knicks: O/U 240.5' with outcomes: Under, Over
+    - 'Spread: Old Dominion (-10.5)' with outcomes: Troy, Old Dominion
+    - 'Ducks vs. Red Wings' with outcomes: Ducks, Red Wings
+    - 'Jets vs. Kraken' with outcomes: Jets, Kraken
+    - 'Spread: Patriots (-13.5)' with outcomes: Patriots, Jets
+    - 'Spread: Spurs (-5.5)' with outcomes: Spurs, Bulls, Suns
+    - 'Grizzlies vs. Knicks: O/U 232.5' with outcomes: Under, Over
+    - 'Ducks vs. Avalanche' with outcomes: Ducks, Avalanche
+    - 'O/U 43.5' with outcomes: Under, Over
+    - 'Spread: Trail Blazers (-8.5)' with outcomes: Lakers, Pelicans
+    - 'Ohio vs. Western Michigan' with outcomes: Western Michigan, Ohio
+    - 'Trail Blazers vs. Magic: O/U 235.5' with outcomes: Under, Over
+    - 'Spread: Central Michigan (-1.5)' with outcomes: Buffalo, Central Michigan
+    - 'Utah vs. Senators: O/U 6.5' with outcomes: Under, Over
+    - 'Spread: Seahawks (-7.5)' with outcomes: Seahawks, Cardinals
+    - 'Spread: Senators (-1.5)' with outcomes: Bruins, Senators
+    - 'Spread: Bears (-4.5)' with outcomes: Bears, Giants
+    - 'Jaguars vs. Texans' with outcomes: Jaguars, Texans
+    - 'Giants vs. Bears: O/U 45.5' with outcomes: Under, Over
+    - 'Bills vs. Dolphins' with outcomes: Bills, Dolphins
+    - 'Spread: Bears (-3.5)' with outcomes: Bears, Giants
+    - 'Colorado vs. West Virginia: O/U 52.5' with outcomes: Under, Over
+    - 'O/U 46.5' with outcomes: Under, Over
+    - 'Spread: Spurs (-12.5)' with outcomes: Nets, Pelicans
+    - 'Barcelos vs. Simon' with outcomes: Barcelos, Simon
+    - 'Raptors vs. 76ers' with outcomes: Raptors, 76ers
+    - 'Spread: Spurs (-10.5)' with outcomes: Spurs, Pelicans
+    - 'Brown vs. Bonfim' with outcomes: Brown, Bonfim
+    - 'Spread: Oregon (-6.5)' with outcomes: Iowa, Oregon
+    - 'Spread: Spurs (-11.5)' with outcomes: Nets, Pelicans
+    - 'Penguins vs. Devils' with outcomes: Penguins, Devils
+    - 'Georgia vs. Mississippi State' with outcomes: Mississippi State, Georgia
+    - 'Spread: Manchester United (-0.5)' with outcomes: Tottenham, Brighton, Manchester United
+    - 'Spread: Bayer Leverkusen (-1.5)' with outcomes: 1. FC Heidenheim, Bayer Leverkusen
+    - 'Warriors vs. Nuggets' with outcomes: Nuggets, Warriors
+    - 'Cavaliers vs. Wizards: O/U 240.5' with outcomes: Under, Over
+    - 'Rockets vs. Spurs' with outcomes: Spurs, Rockets
+    - 'Panthers vs. Kings: O/U 5.5' with outcomes: Under, Over
+    - 'Canadiens vs. Devils: O/U 6.5' with outcomes: Under, Over
+    - 'Raiders vs. Broncos' with outcomes: Broncos, Raiders
+    - 'Spread: South Florida (-13.5)' with outcomes: UTSA Roadrunners, South Florida
+    - 'Canadiens vs. Devils' with outcomes: Canadiens, Devils
+    - 'Nets vs. Pacers: O/U 232.5' with outcomes: Under, Over
+    - 'Timberwolves vs. Knicks' with outcomes: Timberwolves, Knicks
+    - 'Spread: Trail Blazers (-9.5)' with outcomes: Lakers, Trail Blazers
+    - 'Lakers vs. Trail Blazers: O/U 228.5' with outcomes: Under, Over
+    - 'Mavericks vs. Rockets: O/U 225.5' with outcomes: Under, Over
+    - 'Oilers vs. Blues' with outcomes: Oilers, Blues
+    - 'Bulls vs. Knicks' with outcomes: Bulls, Knicks
+    - 'Spurs vs. Suns: O/U 226.5' with outcomes: Under, Over
+    - 'Spread: Rams (-13.5)' with outcomes: Rams, Saints
+    - 'Spread: Seahawks (-2.5)' with outcomes: Seahawks, Commanders
+    - 'Flames vs. Flyers' with outcomes: Flyers, Flames
+    - 'Colts vs. Steelers' with outcomes: Colts, Steelers
+    - 'Falcons vs. Patriots' with outcomes: Patriots, Falcons
+    - 'Spread: Patriots (-5.5)' with outcomes: Patriots, Falcons
+    - 'Spread: Ole Miss (-12.5)' with outcomes: Ole Miss, South Carolina
+    - 'Elekana vs. Christian' with outcomes: Elekana, Christian
+    - 'Spread: Ohio State (-20.5)' with outcomes: Penn State, Ohio State
+    - 'Spread: Texas (-3.5)' with outcomes: Vanderbilt, Texas
+    - 'Timberwolves vs. Hornets' with outcomes: Timberwolves, Hornets
+    - 'Spread: Bucks (-5.5)' with outcomes: Kings, Bucks
+    - 'Hurricanes vs. Bruins: O/U 6.5' with outcomes: Under, Over
+    - 'Buffalo vs. Bowling' with outcomes: Bowling, Buffalo
+    - 'Spread: Los Angeles Dodgers (-1.5)' with outcomes: Los Angeles Dodgers, Toronto Blue Jays
+    - 'Hawks vs. Pacers: O/U 231.5' with outcomes: Under, Over
+    - 'Penguins vs. Wild: O/U 6.5' with outcomes: Under, Over
+    - 'Devils vs. Sharks' with outcomes: Devils, Sharks
+    - 'Spread: Marshall (-6.5)' with outcomes: Marshall, Coastal Carolina Chanticleers
+    - 'Trail Blazers vs. Jazz: O/U 235.5' with outcomes: Under, Over
+    - 'Toronto Blue Jays vs. Los Angeles Dodgers: O/U 8.5' with outcomes: Under, Over
+    - 'Rockets vs. Raptors' with outcomes: Raptors, Rockets
+    - '76ers vs. Wizards: O/U 238.5' with outcomes: Under, Over
+    - 'Spread: Flyers (-1.5)' with outcomes: Islanders, Penguins
+    - 'Blue Jays vs. Dodgers' with outcomes: Blue Jays, Dodgers
+    - 'Jets vs. Wild' with outcomes: Jets, Wild
+    - 'Hawks vs. Bulls: O/U 243.5' with outcomes: Under, Over
+    - 'Nets vs. Rockets: O/U 224.5' with outcomes: Under, Over
+    - 'Spread: Trail Blazers (-2.5)' with outcomes: Lakers, Trail Blazers
+    - 'Spread: Rockets (-15.5)' with outcomes: Rockets, Nets
+    - 'Trail Blazers vs. Lakers' with outcomes: Lakers, Trail Blazers
+    - 'Celtics vs. Pistons: O/U 226.5' with outcomes: Under, Over
+    - 'Raptors vs. Mavericks: O/U 231.5' with outcomes: Under, Over
+    - 'Spread: Colts (-15.5)' with outcomes: Colts, Titans
+    - 'Cowboys vs. Broncos' with outcomes: Broncos, Cowboys
+    - 'Spread: Falcons (-6.5)' with outcomes: Falcons, Dolphins
+    - 'Jets vs. Bengals' with outcomes: Jets, Bengals
+    - 'Bears vs. Ravens' with outcomes: Ravens, Bears
+    - '49ers vs. Texans' with outcomes: 49ers, Texans
+    - 'Arsenal vs. Crystal Palace: O/U 2.5' with outcomes: Under, Over
+    - 'Spread: San Diego State (-3.5)' with outcomes: San Diego State, Fresno State
+    - 'Suns vs. Nuggets: O/U 233.5' with outcomes: Under, Over
+    - 'Spread: Utah (-14.5)' with outcomes: Colorado, Utah
+    - 'Los Angeles Dodgers vs. Toronto Blue Jays: O/U 7.5' with outcomes: Under, Over
+    - 'Georgia Southern vs. Arkansas State' with outcomes: Georgia Southern, Arkansas State
+    - 'Spread: TCU (-16.5)' with outcomes: TCU, West Virginia
+    - 'Spread: Washington (-3.5)' with outcomes: Washington, Illinois
+    - 'Texas vs. Mississippi State' with outcomes: Mississippi State, Texas
+    - 'Spread: Thunder (-7.5)' with outcomes: Rockets, Pacers, Thunder
+    - 'Avalanche vs. Bruins' with outcomes: Bruins, Avalanche
+    - 'SMU Mustangs vs. Wake Forest' with outcomes: SMU Mustangs, Wake Forest
+    - 'Spread: Boise State (-21.5)' with outcomes: Boise State, Nevada Wolf Pack
+    - 'Heat vs. Grizzlies: O/U 233.5' with outcomes: Under, Over
+    - 'North Texas vs. Charlotte 49ers: O/U 61.5' with outcomes: Under, Over
+    - 'Vikings vs. Chargers: O/U 44.5' with outcomes: Under, Over
+    - '76ers vs. Celtics' with outcomes: 76ers, Celtics
+    - 'Western Kentucky vs. Louisiana Tech' with outcomes: Louisiana Tech, Western Kentucky
+    - 'Cavaliers vs. Knicks: O/U 228.5' with outcomes: Under, Over
+    - 'Spread: Louisiana Tech (-3.5)' with outcomes: Western Kentucky, Louisiana Tech
+    - 'Devils vs. Maple Leafs' with outcomes: Maple Leafs, Devils
+    - 'Canadiens vs. Flames' with outcomes: Canadiens, Flames
+
+Analysis complete. Saved statistics to backend/polymarket_user_stats.csv
