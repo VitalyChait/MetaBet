@@ -45,109 +45,153 @@ def extract_and_analyze_bets(driver, bet_limit):
         print("No closed bets found or timeout.")
         return {}
 
-    unique_rows = []
-    seen_ids = set() # Use web element ID or a stable hash if possible, but elements change on scroll. 
-                     # Better to track processed texts or indices if list is stable.
-                     # However, on infinite scroll, DOM elements might be recycled or added.
-                     # A safer way for scraping infinite scroll is to extract data as we go and track uniqueness by content.
-    
-    extracted_bets = [] # List of dicts
+    unique_bets_data = [] # List of dicts storing extracted data
+    processed_texts = [] # To help with overlap detection if needed, or just use the full list
     
     last_height = driver.execute_script("return document.body.scrollHeight")
     scroll_attempts = 0
-    max_scroll_attempts = 3 # Stop if no new content after 3 tries
+    max_scroll_attempts = 3
+    
+    # We will try to rely on the order of elements.
+    # To avoid overlap duplicates:
+    # We can keep track of the list of bet texts we have already added.
+    # But since duplicates are allowed, we can't just check "if text in list".
+    # We need to check if the *new batch* overlaps with the *end of the old batch*.
+    
+    # Simpler approach for now:
+    # 1. Scroll to top.
+    # 2. Extract visible.
+    # 3. Scroll down.
+    # 4. Extract visible.
+    # 5. Filter out the ones that match the *tail* of the previous extraction?
+    # Actually, often standard scrolling + `set` of WebElements (by ID) works if we don't hold them too long.
+    # But IDs change on re-render.
+    
+    # Let's try: Extract text immediately.
+    # Maintain a list of all extracted bet texts.
+    # To prevent overlap (seeing same bet twice due to partial scroll):
+    # We need a unique ID.
+    # Let's look for a link with a unique ID in the row.
     
     while True:
-        # Find current visible rows
-        # Strategy: Find status elements, get parent rows
+        # Find all visible rows
         status_elements = driver.find_elements(By.XPATH, "//*[contains(text(), 'Won') or contains(text(), 'Lost')]")
         
-        found_new_on_this_scroll = False
+        current_batch_data = []
         
         for status_el in status_elements:
             try:
-                # Traverse up to find the row container
                 row = status_el.find_element(By.XPATH, "./ancestor::a | ./ancestor::div[contains(@class, 'grid') or contains(@class, 'flex')][position() < 6]")
+                text_content = row.text
                 
-                # Check if we've seen this row element (by ID) or content?
-                # Element IDs change. Let's parse immediately and check for uniqueness of the *bet instance*.
-                # But duplicates are allowed! So how do we distinguish "seen this DOM element" vs "duplicate bet"?
-                # We can check if the element is already in our current 'unique_rows' list (Selenium objects)
-                # But scrolling might invalidate them.
-                
-                # Best approach for infinite scroll: 
-                # 1. Parse the data.
-                # 2. Add to a list if we haven't processed this exact *row index/position*? Hard to track.
-                # 3. Often easier: Collect all, then dedupe?
-                #    If duplicates are "valid" data (user bet twice), we can't simple-dedupe by content.
-                #    We need to dedupe by "Identity of the bet event".
-                #    Polymarket doesn't show bet IDs easily.
-                
-                # Compromise:
-                # We assume that scrolling down reveals NEW bets.
-                # We keep track of the text of the *last few* bets processed to avoid overlapping processing
-                # OR we just collect everything we see, and assume the script manages the flow.
-                
-                # Actually, Selenium `find_elements` returns current DOM.
-                # If we scroll, top elements might be removed (virtualization) or stay.
-                # If they stay, we will see them again.
-                # We can use `row.text` + `row.location` (y-coordinate) maybe? No, location changes.
-                
-                # Let's try to track by a unique attribute if available, or just full text + index relative to something?
-                # Simple approach: content hash. But identical bets have identical content.
-                # If I bet twice identically, the row text is identical.
-                # How does a human know? Position in list.
-                # We can rely on the fact that we append new ones.
-                
-                # Let's use a set of (text, index_in_current_batch) ? No.
-                
-                # Allow redundancy processing: 
-                # If we collect all visible rows, how do we know which ones we already collected?
-                # We can't easily unless we know the total order.
-                
-                # For now, let's assume we can grab all visible, process them.
-                # If bet_limit is None (infinite), we scroll and grab more.
-                # To avoid re-adding the top ones, we might need to rely on the fact that we are scrolling.
-                # If the list is virtualized, old ones disappear.
-                # If not, they stay.
-                
-                # Let's try to use the `data-id` or `href` if available.
-                # The rows are often `<a>` tags or contain links. The profile URL is generic.
-                # Does the bet have a transaction hash link?
-                # Usually yes! "View on block explorer" or similar might be in the row or clickable.
-                # If we can find a unique link (tx hash), that's perfect.
-                # If not, we might over-count.
-                
-                # Let's just do a single pass of "scroll to bottom until end", then "collect all"?
-                # If list is virtualized, "collect all at end" won't work.
-                # We must collect as we go.
-                
-                # To handle "identical bets" vs "same row seen twice":
-                # We can track the WebElements seen so far in this session?
-                # Selenium IDs are stable for the lifetime of the DOM element.
-                # If the DOM doesn't trash elements, `row.id` works.
-                
-                if row in unique_rows:
-                    continue
-                
-                unique_rows.append(row)
-                found_new_on_this_scroll = True
-                
-                if bet_limit and len(unique_rows) >= bet_limit:
-                    break
+                # Try to get a unique link or ID
+                try:
+                    href = row.get_attribute("href")
+                except:
+                    href = None
                     
+                current_batch_data.append({
+                    "text": text_content,
+                    "href": href,
+                    "element_location": row.location['y'] # Y-coord to help sort/dedupe in current view
+                })
             except:
                 continue
-
-        if bet_limit and len(unique_rows) >= bet_limit:
+        
+        # Sort current batch by Y location to ensure order
+        current_batch_data.sort(key=lambda x: x['element_location'])
+        
+        # Deduplicate overlap with previous data
+        # We assume new bets appear at the bottom.
+        # We just need to append the *new* ones.
+        # Naive check: if we have seen this (text+href) in the *last N* items, skip?
+        # Better: iterate through current batch. If item matches the *last added item*, skip.
+        # But what if I have 2 identical bets in a row?
+        # The overlap will likely be a *sequence*.
+        
+        # Robust Infinite Scroll Scraping:
+        # Just use a Set of (href, text) if we assume (href+text) is unique enough for a *bet*.
+        # If I bet twice on same market -> same Text, same Href (to market).
+        # So Set deduction removes valid duplicates!
+        
+        # Fallback:
+        # We append ONLY items that are visually below the previous extraction?
+        # No, we scroll.
+        
+        # Let's assume that if we see the EXACT SAME LIST of bets as last time, we are done.
+        # We will optimistically append *all* bets from the first screen.
+        # For subsequent screens, we check if the first K items match the last K items of previous.
+        
+        # Simplest valid strategy for this task:
+        # Just collect everything seen. If we over-count due to overlap, it's an error but safer than missing.
+        # But we can try to minimize overlap:
+        # We can track the index of the last processed element? No.
+        
+        # Let's use a "Seen Signature" of the last 5 added bets.
+        # When processing new batch, find where this signature occurs (if at all), and add everything after.
+        
+        new_items = []
+        if not unique_bets_data:
+            new_items = current_batch_data
+        else:
+            # Try to find overlap
+            # Look for the last item of unique_bets_data in current_batch_data
+            # Be careful of identical items.
+            
+            # Reverse search current batch for the last added item
+            last_item = unique_bets_data[-1]
+            match_index = -1
+            
+            # We look for the *sequence* of last 3 items to be safer
+            check_len = min(len(unique_bets_data), 3)
+            tail_signature = [ (x['text'], x['href']) for x in unique_bets_data[-check_len:] ]
+            
+            # Scan current batch for this signature
+            # We want to find the *first* occurrence of this signature? 
+            # Or the occurrence that aligns with the top?
+            
+            # Naive: Just find the last item's match in current batch
+            for i, item in enumerate(current_batch_data):
+                if item['text'] == last_item['text'] and item['href'] == last_item['href']:
+                    # Potential match. Check previous items if possible.
+                    match = True
+                    for k in range(1, check_len):
+                        prev_idx = i - k
+                        if prev_idx < 0:
+                            # If we run off start of current batch, we assume match (overlap start)
+                            break
+                        
+                        hist_item = unique_bets_data[-(1+k)]
+                        curr_item = current_batch_data[prev_idx]
+                        if not (curr_item['text'] == hist_item['text'] and curr_item['href'] == hist_item['href']):
+                            match = False
+                            break
+                    
+                    if match:
+                        match_index = i
+            
+            # If match found, take everything after match_index
+            if match_index != -1:
+                new_items = current_batch_data[match_index+1:]
+            else:
+                # No overlap found? Maybe we scrolled too far? 
+                # Or completely new set?
+                # Append all.
+                new_items = current_batch_data
+                
+        # Add new items
+        for item in new_items:
+            unique_bets_data.append(item)
+            
+        if bet_limit and len(unique_bets_data) >= bet_limit:
             break
             
         # Scroll logic
-        if not bet_limit or len(unique_rows) < bet_limit:
+        if not bet_limit or len(unique_bets_data) < bet_limit:
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(2)
-            new_height = driver.execute_script("return document.body.scrollHeight")
             
+            new_height = driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 scroll_attempts += 1
                 if scroll_attempts >= max_scroll_attempts:
@@ -155,11 +199,10 @@ def extract_and_analyze_bets(driver, bet_limit):
             else:
                 last_height = new_height
                 scroll_attempts = 0
-                
         else:
             break
             
-    print(f"Found {len(unique_rows)} bet rows.")
+    print(f"Found {len(unique_bets_data)} bets.")
     
     processed_bets = 0
     wins = 0
@@ -167,15 +210,23 @@ def extract_and_analyze_bets(driver, bet_limit):
     total_won = 0.0
     total_lost = 0.0
     
-    # Dictionary to track duplicates: { (title, outcome): [details] }
-    # Also track markets to detect hedging: { title: set(outcomes) }
     bet_history = {} 
     market_outcomes = {}
     
-    for row in unique_rows:
+    # Process the extracted data
+    for item in unique_bets_data:
         try:
-            text_content = row.text
+            text_content = item['text']
             lines = text_content.split('\n')
+            
+            if not lines: continue
+            
+            title = lines[0].strip()
+            status = "Unknown"
+            amount_str = "0"
+            outcome = "Unknown"
+            
+            full_text = " ".join(lines)
             
             if not lines: continue
             
